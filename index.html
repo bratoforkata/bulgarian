@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Learn English (Bulgarian) - Small App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">Bulgarian → English trainer</div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="welcome">Welcome</button>
+      <button class="tab" onclick="location.href='practice.html'">Practice</button>
+      <button class="tab" onclick="location.href='dictionary.html'">Dictionary</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="welcome" class="card pane">
+      <h2>Welcome to Bulgarian Language Trainer</h2>
+      <p class="small-muted">Learn Bulgarian vocabulary with this simple trainer app:</p>
+      <ul class="feature-list">
+        <li>Practice mode: Test your knowledge with random words</li>
+        <li>Dictionary: View all words and add new ones</li>
+      </ul>
+      <div class="welcome-actions">
+        <button onclick="location.href='practice.html'" class="btn">Start Practice</button>
+        <button onclick="location.href='dictionary.html'" class="btn btn-secondary">Open Dictionary</button>
+      </div>
+    </section>
+  </main>
+
+<script>
+// App plan: load data.html -> parse lines -> manage in-memory array -> allow adds -> download updated txt
+
+const TABS = Array.from(document.querySelectorAll('.tab'));
+const PANES = document.querySelectorAll('.pane');
+function showTab(name){
+  TABS.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
+  PANES.forEach(p=>p.style.display = p.id===name ? '' : 'none');
+}
+TABS.forEach(t=>t.addEventListener('click', ()=>showTab(t.dataset.tab)));
+document.getElementById('go-practice').addEventListener('click', () => location.href = 'practice.html');
+document.getElementById('go-dict').addEventListener('click', ()=>showTab('dictionary'));
+
+let words = []; // {bulgarian, english}
+
+function parseText(text){
+  return text.split('\n').map(l=>l.trim()).filter(Boolean).map(line=>{
+    const parts = line.split(' - ');
+    if(parts.length>=2){
+      return {bulgarian: parts[0].trim(), english: parts.slice(1).join(' - ').trim()};
+    }
+    return null;
+  }).filter(Boolean);
+}
+
+// Function to handle file loading
+async function loadFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => resolve(e.target.result);
+    reader.onerror = reject;
+    reader.readAsText(file, 'utf-8');
+  });
+}
+
+// Function to show file picker and load selected file
+async function showFilePicker() {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.html,.txt';
+  fileInput.style.display = 'none';
+  
+  try {
+    const file = await new Promise((resolve) => {
+      fileInput.onchange = (e) => resolve(e.target.files[0]);
+      document.body.appendChild(fileInput);
+      fileInput.click();
+    });
+
+    if (!file) {
+      throw new Error('No file selected');
+    }
+
+    const content = await loadFile(file);
+    
+    if (file.name.toLowerCase().endsWith('.html')) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, 'text/html');
+      const el = doc.getElementById('dictionary-data');
+      return el ? (el.textContent || el.innerText) : content;
+    }
+    return content;
+  } finally {
+    document.body.removeChild(fileInput);
+  }
+}
+
+// Main loading function
+async function loadData() {
+  try {
+    // Try data.html first
+    const response = await fetch('data.html');
+    if (response.ok) {
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const el = doc.getElementById('dictionary-data');
+      if (el) {
+        words = parseText(el.textContent || el.innerText);
+        refreshPractice();
+        renderDict(words);
+        return;
+      }
+    }
+
+    // // Try Bulgarian.txt next
+    // const txtResponse = await fetch('Bulgarian.txt');
+    // if (txtResponse.ok) {
+    //   const text = await txtResponse.text();
+    //   words = parseText(text);
+    //   refreshPractice();
+    //   renderDict(words);
+    //   return;
+    // }
+
+    throw new Error('Could not load files automatically');
+  } catch (err) {
+    console.error('Auto-loading failed:', err);
+    try {
+      const content = await showFilePicker();
+      words = parseText(content);
+      refreshPractice();
+      renderDict(words);
+    } catch (err) {
+      console.error('File loading failed:', err);
+      alert('Failed to load the dictionary. Please make sure you have either data.html or Bulgarian.txt accessible.');
+    }
+  }
+}
+
+// Start loading
+loadData();
+  
+
+function randomWord(){
+  if(words.length===0) return null;
+  return words[Math.floor(Math.random()*words.length)];
+}
+
+const practiceEnglish = document.getElementById('practice-english');
+const practiceBulgarian = document.getElementById('practice-bulgarian');
+let current = null;
+
+function refreshPractice(){
+  current = randomWord();
+  if(!current){ practiceEnglish.textContent='—'; practiceBulgarian.textContent='—'; return; }
+  practiceEnglish.textContent = current.english;
+  practiceBulgarian.textContent = '—';
+}
+
+document.getElementById('new-word').addEventListener('click', ()=>{ refreshPractice(); });
+document.getElementById('reveal').addEventListener('click', ()=>{ if(current) practiceBulgarian.textContent = current.bulgarian; });
+
+// add word from practice
+function addWordToMemory(bul, eng){
+  words.unshift({bulgarian: bul, english: eng});
+  renderDict(words);
+}
+
+// document.getElementById('add-word').addEventListener('click', ()=>{
+//   const bul = document.getElementById('add-bulgarian').value.trim();
+//   const eng = document.getElementById('add-english').value.trim();
+//   if(!bul||!eng){ alert('Fill both fields'); return; }
+//   addWordToMemory(bul,eng);
+//   document.getElementById('add-bulgarian').value=''; document.getElementById('add-english').value='';
+//   alert('Added locally. Use "Download updated .txt" in Dictionary tab to save permanently.');
+// });
+
+// dictionary rendering
+const dictList = document.getElementById('dict-list');
+function renderDict(list){
+  dictList.innerHTML = list.map(item=>`
+    <tr>
+      <td>${item.bulgarian}</td>
+      <td>${item.english}</td>
+    </tr>
+  `).join('');
+  applyFilter();
+}
+
+// filter
+const filterInput = document.getElementById('filter');
+filterInput.addEventListener('input', ()=>applyFilter());
+function applyFilter(){
+  const q = filterInput.value.trim().toLowerCase();
+  const filtered = q? words.filter(w=>w.bulgarian.toLowerCase().includes(q)||w.english.toLowerCase().includes(q)) : words;
+  dictList.innerHTML = filtered.map(item=>`
+    <tr>
+      <td>${item.bulgarian}</td>
+      <td>${item.english}</td>
+    </tr>
+  `).join('');
+}
+
+// add from dict tab
+document.getElementById('dict-add-btn').addEventListener('click', ()=>{
+  const bul = document.getElementById('dict-add-bul').value.trim();
+  const eng = document.getElementById('dict-add-eng').value.trim();
+  if(!bul||!eng){ alert('Fill both fields'); return; }
+  addWordToMemory(bul,eng);
+  document.getElementById('dict-add-bul').value=''; document.getElementById('dict-add-eng').value='';
+  alert('Added locally. Use "Download updated .txt" to save permanently.');
+});
+
+// download updated text file
+function buildTxt(){
+  return words.map(w=>`${w.bulgarian} - ${w.english}`).join('\n');
+}
+
+document.getElementById('download-txt').addEventListener('click', ()=>{
+  const blob = new Blob([buildTxt()], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Bulgarian.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+</script>
+</body>
+</html>

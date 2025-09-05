@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practice — Bulgarian → English</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">Bulgarian → English trainer</div>
+    <nav class="tabs">
+      <button class="tab" onclick="location.href='index.html'">Welcome</button>
+      <button class="tab active">Practice</button>
+      <button class="tab" onclick="location.href='dictionary.html'">Dictionary</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="practice-layout">
+        <div>
+          <div class="word-big" id="word-english">—</div>
+          <div class="small-muted" id="word-bulgarian">—</div>
+        </div>
+        <div class="practice-actions">
+          <button id="next" class="btn">Next word</button>
+        </div>
+      </div>
+      <div class="practice-help small-muted">Click Next word to see another word. The Bulgarian translation will appear here.</div>
+    </section>
+  </main>
+
+<script>
+        // Store words array
+        let words = [];
+
+        // Load words from data.html
+        fetch('data.html')
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(html) {
+                // Parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const dataElement = doc.getElementById('dictionary-data');
+                
+                if (!dataElement) {
+                    throw new Error('Dictionary data not found in data.html');
+                }
+
+                // Parse the words
+                const lines = dataElement.textContent.split('\n');
+                words = lines
+                    .filter(line => line.trim() && line.includes(' - '))
+                    .map(line => {
+                        const [bul, ...eng] = line.split(' - ');
+                        return {
+                            bulgarian: bul.trim(),
+                            english: eng.join(' - ').trim()
+                        };
+                    });
+
+                if (words.length === 0) {
+                    throw new Error('No words found in data.html');
+                }
+
+                console.log('Loaded ' + words.length + ' words');
+                showWord();
+            })
+            .catch(function(error) {
+                console.error('Error loading words:', error);
+                document.getElementById('word-english').textContent = 'Error loading words';
+                document.getElementById('word-bulgarian').textContent = 'Please check data.html';
+            });
+
+        // Show a random word
+        function showWord() {
+            if (words.length === 0) {
+                return;
+            }
+
+            const index = Math.floor(Math.random() * words.length);
+            const word = words[index];
+
+            document.getElementById('word-english').textContent = word.english;
+            document.getElementById('word-bulgarian').textContent = '...';
+
+            setTimeout(function() {
+                document.getElementById('word-bulgarian').textContent = word.bulgarian;
+            }, 5000);
+        }
+
+        // Setup next button
+        document.getElementById('next').addEventListener('click', showWord);
+    </script>
+   
+
+</script>
+</body>
+</html>

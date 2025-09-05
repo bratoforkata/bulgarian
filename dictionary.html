@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary — Bulgarian → English</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">Bulgarian → English trainer</div>
+        <nav class="tabs">
+            <button class="tab" onclick="location.href='index.html'">Welcome</button>
+            <button class="tab" onclick="location.href='practice.html'">Practice</button>
+            <button class="tab active">Dictionary</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <!-- Add new word section -->
+            <div class="dictionary-controls controls">
+                <input id="dict-add-bul" class="input" placeholder="Bulgarian word">
+                <input id="dict-add-eng" class="input" placeholder="English translation">
+                <button id="dict-add-btn" class="btn">Add to dictionary</button>
+            </div>
+
+            <!-- Search and download section -->
+            <div class="controls" style="margin-top: 16px">
+                <input id="filter" class="input" placeholder="Search words...">
+            </div>
+
+            <!-- Word list -->
+            <div class="table-container">
+                <table class="dictionary-table">
+                    <thead>
+                        <tr>
+                            <th>Bulgarian</th>
+                            <th>English</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dict-list"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+<script>
+let words = []; // {bulgarian, english}
+
+// Parse text content into words array
+function parseText(text) {
+    return text.split('\n')
+        .map(line => line.trim())
+        .filter(line => line && line.includes(' - '))
+        .map(line => {
+            const parts = line.split(' - ');
+            return {
+                bulgarian: parts[0].trim(),
+                english: parts.slice(1).join(' - ').trim()
+            };
+        });
+}
+
+// Load data from data.html
+async function loadData() {
+    try {
+        const response = await fetch('data.html');
+        if (!response.ok) throw new Error('Could not load data.html');
+        
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const el = doc.getElementById('dictionary-data');
+        if (!el) throw new Error('Dictionary data not found');
+        
+        words = parseText(el.textContent || el.innerText);
+        renderDictionary();
+    } catch (err) {
+        console.error('Loading failed:', err);
+        alert('Failed to load dictionary data. Please make sure data.html is available.');
+    }
+}
+
+// Render the dictionary table
+function renderDictionary(filterText = '') {
+    const dictList = document.getElementById('dict-list');
+    let displayWords = words;
+
+    if (filterText) {
+        const searchText = filterText.toLowerCase();
+        displayWords = words.filter(word => 
+            word.bulgarian.toLowerCase().includes(searchText) ||
+            word.english.toLowerCase().includes(searchText)
+        );
+    }
+
+    dictList.innerHTML = displayWords
+        .map(word => `
+            <tr>
+                <td>${word.bulgarian}</td>
+                <td>${word.english}</td>
+            </tr>
+        `)
+        .join('');
+}
+
+// Add a new word
+function addWord(bulgarian, english) {
+    if (!bulgarian || !english) {
+        alert('Please enter both Bulgarian and English words');
+        return;
+    }
+
+    // Add to beginning of array so it's visible immediately
+    words.unshift({ bulgarian, english });
+    renderDictionary();
+
+    // Clear input fields
+    document.getElementById('dict-add-bul').value = '';
+    document.getElementById('dict-add-eng').value = '';
+}
+
+// Event Listeners
+document.getElementById('filter').addEventListener('input', (e) => {
+    renderDictionary(e.target.value.trim());
+});
+
+document.getElementById('dict-add-btn').addEventListener('click', () => {
+    const bulWord = document.getElementById('dict-add-bul').value.trim();
+    const engWord = document.getElementById('dict-add-eng').value.trim();
+    addWord(bulWord, engWord);
+});
+
+// Initialize
+loadData();
+</script>
+</body>
+</html>
