@@ -211,6 +211,72 @@ body{
     margin-top: 14px;
 }
 
+/* Accuracy section styles */
+.accuracy-section {
+    margin-top: 20px;
+}
+
+.accuracy-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.accuracy-meter {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.accuracy-display {
+    color: var(--accent-2);
+}
+
+.feedback-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.success-btn {
+    background: var(--accent-2);
+}
+
+.fail-btn {
+    background: #ff6b6b;
+    color: #071229;
+}
+
+/* Failed words section */
+.failed-words-section {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 16px;
+}
+
+.failed-words-section h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--accent-2);
+}
+
+#failed-words-list {
+    width: 100%;
+    min-height: 100px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: inherit;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+#failed-words-list:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
 /* Responsive styles */
 @media (max-width:720px){
     .tabs { display: flex }
