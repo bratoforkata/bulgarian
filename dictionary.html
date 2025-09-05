@@ -25,7 +25,7 @@
                 <button id="dict-add-btn" class="btn">Add to dictionary</button>
             </div>
 
-            <!-- Search and download section -->
+            <!-- Search section -->
             <div class="controls" style="margin-top: 16px">
                 <input id="filter" class="input" placeholder="Search words...">
             </div>
@@ -62,7 +62,7 @@ function parseText(text) {
         });
 }
 
-// Load data from data.html
+// Load data from data.html and localStorage
 async function loadData() {
     try {
         const response = await fetch('data.html');
@@ -75,10 +75,26 @@ async function loadData() {
         if (!el) throw new Error('Dictionary data not found');
         
         words = parseText(el.textContent || el.innerText);
+        
+        // Load additional words from localStorage
+        const storedWords = localStorage.getItem('bulgarian-words');
+        if (storedWords) {
+            const additionalWords = JSON.parse(storedWords);
+            words = [...additionalWords, ...words]; // Add stored words first
+        }
+        
         renderDictionary();
     } catch (err) {
         console.error('Loading failed:', err);
-        alert('Failed to load dictionary data. Please make sure data.html is available.');
+        
+        // Fallback: load only from localStorage
+        const storedWords = localStorage.getItem('bulgarian-words');
+        if (storedWords) {
+            words = JSON.parse(storedWords);
+            renderDictionary();
+        } else {
+            alert('Failed to load dictionary data. Please make sure data.html is available or add some words first.');
+        }
     }
 }
 
@@ -115,6 +131,12 @@ function addWord(bulgarian, english) {
     // Add to beginning of array so it's visible immediately
     words.unshift({ bulgarian, english });
     renderDictionary();
+
+    // Save to localStorage
+    const storedWords = localStorage.getItem('bulgarian-words') || '[]';
+    const additionalWords = JSON.parse(storedWords);
+    additionalWords.unshift({ bulgarian, english });
+    localStorage.setItem('bulgarian-words', JSON.stringify(additionalWords));
 
     // Clear input fields
     document.getElementById('dict-add-bul').value = '';

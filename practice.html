@@ -29,11 +29,36 @@
       </div>
       <div class="practice-help small-muted">Click Next word to see another word. The Bulgarian translation will appear here.</div>
     </section>
+
+    <section class="card accuracy-section">
+      <div class="accuracy-layout">
+        <div class="accuracy-meter">
+          <div class="accuracy-display">Accuracy: 0%</div>
+        </div>
+        <div class="feedback-buttons">
+          <button id="success-btn" class="btn success-btn" disabled>Success</button>
+          <button id="fail-btn" class="btn fail-btn" disabled>Fail</button>
+        </div>
+      </div>
+      <div class="failed-words-section">
+        <h3>Failed Words</h3>
+        <textarea id="failed-words-list" readonly placeholder="Words you got wrong will appear here..."></textarea>
+        <button id="copy-failed-btn" class="btn btn-secondary">Copy Failed Words</button>
+      </div>
+    </section>
   </main>
 
 <script>
         // Store words array
         let words = [];
+
+        // Accuracy tracking
+        let totalAttempts = 0;
+        let successes = 0;
+        let failedWords = [];
+
+        // Current word being tested
+        let currentWord = null;
 
         // Load words from data.html
         fetch('data.html')
@@ -82,21 +107,64 @@
             }
 
             const index = Math.floor(Math.random() * words.length);
-            const word = words[index];
+            currentWord = words[index];
 
-            document.getElementById('word-english').textContent = word.english;
+            document.getElementById('word-english').textContent = currentWord.english;
             document.getElementById('word-bulgarian').textContent = '...';
 
+            // Disable buttons
+            document.getElementById('success-btn').disabled = true;
+            document.getElementById('fail-btn').disabled = true;
+
             setTimeout(function() {
-                document.getElementById('word-bulgarian').textContent = word.bulgarian;
+                document.getElementById('word-bulgarian').textContent = currentWord.bulgarian;
+                // Enable buttons after reveal
+                document.getElementById('success-btn').disabled = false;
+                document.getElementById('fail-btn').disabled = false;
             }, 5000);
+        }
+
+        // Update accuracy display
+        function updateAccuracy() {
+            const percentage = totalAttempts > 0 ? Math.round((successes / totalAttempts) * 100) : 0;
+            document.querySelector('.accuracy-display').textContent = `Accuracy: ${percentage}%`;
+        }
+
+        // Update failed words display
+        function updateFailedWords() {
+            const failedText = failedWords.map(word => `${word.bulgarian} - ${word.english}`).join('\n');
+            document.getElementById('failed-words-list').value = failedText;
         }
 
         // Setup next button
         document.getElementById('next').addEventListener('click', showWord);
-    </script>
-   
 
-</script>
+        // Setup success and fail buttons
+        document.getElementById('success-btn').addEventListener('click', function() {
+            successes++;
+            totalAttempts++;
+            updateAccuracy();
+            this.disabled = true;
+            document.getElementById('fail-btn').disabled = true;
+        });
+
+        document.getElementById('fail-btn').addEventListener('click', function() {
+            if (currentWord) {
+                failedWords.push(currentWord);
+                updateFailedWords();
+            }
+            totalAttempts++;
+            updateAccuracy();
+            this.disabled = true;
+            document.getElementById('success-btn').disabled = true;
+        });
+
+        document.getElementById('copy-failed-btn').addEventListener('click', function() {
+            const textarea = document.getElementById('failed-words-list');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Failed words copied to clipboard!');
+        });
+    </script>
 </body>
 </html>
