@@ -110,19 +110,13 @@ function renderDictionary(filterText = '') {
             word.english.toLowerCase().includes(searchText)
         );
     }
-
     dictList.innerHTML = displayWords
-        .map(word => `
-            <tr>
-                <td>${word.bulgarian}</td>
-                <td>${word.english}</td>
-            </tr>
-        `)
+        .map(word => `<tr><td>${word.bulgarian}</td><td>${word.english}</td></tr>`)
         .join('');
 }
 
 // Add a new word
-function addWord(bulgarian, english) {
+async function addWord(bulgarian, english) {
     if (!bulgarian || !english) {
         alert('Please enter both Bulgarian and English words');
         return;
@@ -138,6 +132,64 @@ function addWord(bulgarian, english) {
     additionalWords.unshift({ bulgarian, english });
     localStorage.setItem('bulgarian-words', JSON.stringify(additionalWords));
 
+    // Prompt for PAT token
+    const pat = prompt('Enter your GitHub PAT token to update data.html:');
+    if (!pat) {
+        alert('PAT token required to update data.html');
+        return;
+    }
+
+    try {
+        // Fetch current data.html from GitHub
+        const url = 'https://api.github.com/repos/bratoforkata/bulgarian/contents/data.html';
+        const headers = { Authorization: `token ${pat}` };
+        const response = await fetch(url, { headers });
+        if (!response.ok) throw new Error('Failed to fetch data.html from GitHub');
+
+        const data = await response.json();
+        const sha = data.sha;
+        const content = atob(data.content); // Decode base64
+
+        // Find and update the dictionary-data div content
+        const divStartTag = '<div id="dictionary-data">';
+        const divEndTag = '</div>';
+        const start = content.indexOf(divStartTag);
+        if (start === -1) throw new Error('Dictionary data div not found');
+
+        const divStart = start + divStartTag.length;
+        const end = content.indexOf(divEndTag, divStart);
+        if (end === -1) throw new Error('End of dictionary data div not found');
+
+        const existingContent = content.substring(divStart, end);
+        const newLine = '\n' + bulgarian + ' - ' + english;
+        const updatedContent = existingContent + newLine;
+        const newFullContent = content.substring(0, divStart) + updatedContent + content.substring(end);
+
+        // Encode back to base64
+        const newEncoded = btoa(newFullContent);
+
+        // Update the file on GitHub
+        const updateResponse = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                Authorization: `token ${pat}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: `Add word: ${bulgarian} - ${english}`,
+                content: newEncoded,
+                sha: sha,
+                branch: 'adding-f-word'
+            })
+        });
+
+        if (!updateResponse.ok) throw new Error('Failed to update data.html on GitHub');
+
+        alert('Word added to data.html on GitHub successfully!');
+    } catch (error) {
+        alert('Error updating data.html: ' + error.message);
+    }
+
     // Clear input fields
     document.getElementById('dict-add-bul').value = '';
     document.getElementById('dict-add-eng').value = '';
@@ -148,10 +200,10 @@ document.getElementById('filter').addEventListener('input', (e) => {
     renderDictionary(e.target.value.trim());
 });
 
-document.getElementById('dict-add-btn').addEventListener('click', () => {
+document.getElementById('dict-add-btn').addEventListener('click', async () => {
     const bulWord = document.getElementById('dict-add-bul').value.trim();
     const engWord = document.getElementById('dict-add-eng').value.trim();
-    addWord(bulWord, engWord);
+    await addWord(bulWord, engWord);
 });
 
 // Initialize
