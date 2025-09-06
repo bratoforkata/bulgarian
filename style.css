@@ -283,10 +283,60 @@ body{
 
 /* Responsive styles */
 @media (max-width:720px){
-    .tabs { display: flex }
-    .container { padding: 12px }
-    .input { width: 140px }
-    .controls { flex-wrap: wrap }
+    .header {
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .brand {
+        font-size: 14px;
+    }
+    
+    .tabs { 
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 0;
+        gap: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Hide scrollbar on Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+    }
+    
+    .tabs::-webkit-scrollbar {
+        display: none; /* Hide scrollbar on Webkit browsers */
+    }
+    
+    .tab {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    
+    .container { 
+        padding: 12px;
+        margin: 14px auto;
+    }
+    
+    .card {
+        padding: 16px;
+    }
+    
+    .input { 
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .controls { 
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 12px 16px;
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 44px; /* Touch target size */
+    }
     
     .practice-layout {
         flex-direction: column;
@@ -297,6 +347,92 @@ body{
     
     .practice-actions {
         margin-left: 0;
+    }
+    
+    .accuracy-layout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .feedback-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .feedback-buttons .btn {
+        width: 100%;
+    }
+    
+    .stats-details {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    
+    .word-big, #word-bulgarian {
+        font-size: 20px;
+    }
+    
+    .table-container {
+        max-height: 400px;
+        overflow-x: auto; /* Allow horizontal scroll on mobile */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    .dictionary-table th,
+    .dictionary-table td {
+        padding: 8px 6px;
+        font-size: 14px;
+    }
+    
+    .dictionary-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .search-controls,
+    .download-controls {
+        justify-content: center;
+    }
+    
+    #language-toggle {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .practice-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .practice-controls .btn {
+        width: 100%;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+        margin: 8px auto;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    .header {
+        padding: 8px 10px;
+    }
+    
+    .word-big, #word-bulgarian {
+        font-size: 18px;
+    }
+    
+    .btn {
+        padding: 14px 18px;
+        font-size: 16px;
     }
 }
 

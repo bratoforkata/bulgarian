@@ -25,11 +25,13 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - **Data structure**: `{id, bulgarian, english, stats: {attempts, successes, lastShown, successRate}}`
 - **Duplicate prevention**: Compare `word.bulgarian.toLowerCase() + '|' + word.english.toLowerCase()`
 - **Storage hierarchy**: localStorage (session) → data.json (persistent)
+- **Statistics tracking**: Separate session stats from long-term word statistics
 
 ### Intelligent Word Selection
 - **Priority Algorithm**: Never-shown (50pts) + Error rate (30pts) + Time boost (10pts) - Success rate (20pts)
 - **Session tracking**: Prevents word repetition until full cycle completion
 - **Weighted selection**: Top 30% priority words for optimal learning variety
+- **Session reset**: Automatic reset when all words shown, clears tracking sets
 
 ### UI Patterns
 - **Tab system**: Use `data-tab` attributes and `.active` class toggling
@@ -38,6 +40,7 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - **Layout**: `.container` max-width, `.card` components, `.controls` flex containers
 - **Language toggle**: Switch between Bulgarian→English and English→Bulgarian modes
 - **Progress animations**: 5-second countdown timer for translation reveal
+- **Feedback system**: Success/failure/skip messages with auto-fade
 
 ### JavaScript Conventions
 - **Modular architecture**: Separate WordManager and UIManager classes
@@ -45,43 +48,21 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - **Error handling**: Try/catch with user-friendly alerts
 - **DOM manipulation**: Prefer `classList.toggle()` over inline styles
 - **Event listeners**: Use modern arrow functions and proper cleanup
-
-### File Download
-- **Blob API**: `new Blob([content], { type: 'text/plain;charset=utf-8' })`
-- **Download trigger**: `URL.createObjectURL()`, `link.click()`, `URL.revokeObjectURL()`
+- **State management**: Track current word, language mode, and animation states
 
 ### Critical Workflows
 - **Practice session**: Start → Word selection → Reveal animation → User feedback → Auto-advance
 - **Word prioritization**: Failed words get highest priority, success rate reduces priority
 - **Statistics tracking**: Session stats separate from long-term word statistics
 - **Language toggle**: Disabled during reveal animation to prevent confusion
-- **UTF-8 encoding**: Use `btoa(encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)))`
-- **File updates**: GET current SHA, PUT with new content + SHA + commit message
-
-### UI Patterns
-- **Tab system**: Use `data-tab` attributes and `.active` class toggling
-- **CSS variables**: `--bg`, `--card`, `--accent`, `--accent-2`, `--muted`, `--surface-shadow`, `--radius`
-- **Button variants**: `.btn`, `.btn-secondary`, `.btn-ghost`
-- **Layout**: `.container` max-width, `.card` components, `.controls` flex containers
-
-### JavaScript Conventions
-- **Async patterns**: Use `async/await` for fetch operations
-- **Error handling**: Try/catch with user-friendly alerts
-- **DOM manipulation**: Prefer `classList.toggle()` over inline styles
-- **Event listeners**: Use modern arrow functions and proper cleanup
+- **Skip functionality**: Skip words without penalty, available during reveal animation
+- **Loading data**: fetch data.json → parse → merge localStorage → remove duplicates → render
+- **Tab navigation**: Initialize with `showTab('welcome')` on page load
 
 ### File Download
 - **Blob API**: `new Blob([content], { type: 'text/plain;charset=utf-8' })`
 - **Download trigger**: `URL.createObjectURL()`, `link.click()`, `URL.revokeObjectURL()`
-
-### Critical Workflows
-- **Practice session**: Start → Intelligent word selection → Reveal animation → User feedback → Auto-advance
-- **Word prioritization**: Failed words get highest priority, success rate reduces priority
-- **Statistics tracking**: Session stats separate from long-term word statistics
-- **Language toggle**: Disabled during reveal animation to prevent confusion
-- **Skip functionality**: Skip words without penalty, available during reveal animation
-- **Loading data**: fetch data.json → parse → merge localStorage → remove duplicates → render
-- **Tab navigation**: Initialize with `showTab('welcome')` on page load
+- **UTF-8 encoding**: Use `btoa(encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)))`
 
 ## Development Guidelines
 - Keep all CSS in `style.css`, avoid inline styles
