@@ -18,153 +18,253 @@
 
   <main class="container">
     <section class="card">
+      <div class="practice-controls">
+        <button id="language-toggle" class="btn btn-secondary">Mode: Bulgarian → English</button>
+        <button id="reset-session" class="btn btn-ghost">Reset Session</button>
+      </div>
+      
       <div class="practice-layout">
         <div>
           <div class="word-big" id="word-english">—</div>
           <div class="small-muted" id="word-bulgarian">—</div>
         </div>
         <div class="practice-actions">
-          <button id="next" class="btn">Next word</button>
+          <button id="start-practice" class="btn">Start Practice</button>
         </div>
       </div>
-      <div class="practice-help small-muted">Click Next word to see another word. The Bulgarian translation will appear here.</div>
+      <div class="practice-help small-muted">Click Start Practice to begin. Translations will appear after 5 seconds, then use Success/Fail/Skip buttons. Words advance automatically.</div>
+      <div id="feedback-message" class="feedback-message"></div>
     </section>
 
     <section class="card accuracy-section">
       <div class="accuracy-layout">
         <div class="accuracy-meter">
           <div class="accuracy-display">Accuracy: 0%</div>
+          <div class="stats-details"></div>
         </div>
         <div class="feedback-buttons">
-          <button id="success-btn" class="btn success-btn" disabled>Success</button>
-          <button id="fail-btn" class="btn fail-btn" disabled>Fail</button>
+          <button id="success-btn" class="btn success-btn" disabled>✓ Success</button>
+          <button id="fail-btn" class="btn fail-btn" disabled>✗ Fail</button>
+          <button id="skip-btn" class="btn btn-ghost" disabled>⏭ Skip</button>
         </div>
       </div>
       <div class="failed-words-section">
-        <h3>Failed Words</h3>
-        <textarea id="failed-words-list" readonly placeholder="Words you got wrong will appear here..."></textarea>
-        <button id="copy-failed-btn" class="btn btn-secondary">Copy Failed Words</button>
+        <h3>Words to Review</h3>
+        <textarea id="failed-words-list" readonly placeholder="Words that you failed will appear here..."></textarea>
+        <button id="copy-failed-btn" class="btn btn-secondary">Copy Words to Review</button>
       </div>
     </section>
   </main>
 
+<script src="js/wordManager.js"></script>
+<script src="js/uiManager.js"></script>
 <script>
-        // Store words array
-        let words = [];
-
-        // Accuracy tracking
-        let totalAttempts = 0;
-        let successes = 0;
-        let failedWords = [];
-
+        // Initialize managers
+        const wordManager = new WordManager();
+        const uiManager = new UIManager();
+        
         // Current word being tested
         let currentWord = null;
+        let isWaitingForReveal = false;
 
-        // Load words from data.html
-        fetch('data.html')
-            .then(function(response) {
-                return response.text();
-            })
-            .then(function(html) {
-                // Parse the HTML
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const dataElement = doc.getElementById('dictionary-data');
+        // Initialize the application
+        async function initApp() {
+            try {
+                // Load words and initialize UI
+                await wordManager.loadWords();
+                uiManager.init();
                 
-                if (!dataElement) {
-                    throw new Error('Dictionary data not found in data.html');
-                }
-
-                // Parse the words
-                const lines = dataElement.textContent.split('\n');
-                words = lines
-                    .filter(line => line.trim() && line.includes(' - '))
-                    .map(line => {
-                        const [bul, ...eng] = line.split(' - ');
-                        return {
-                            bulgarian: bul.trim(),
-                            english: eng.join(' - ').trim()
-                        };
-                    });
-
-                if (words.length === 0) {
-                    throw new Error('No words found in data.html');
-                }
-
-                console.log('Loaded ' + words.length + ' words');
-                showWord();
-            })
-            .catch(function(error) {
-                console.error('Error loading words:', error);
+                // Setup event listeners
+                setupEventListeners();
+                
+                console.log('App initialized successfully');
+            } catch (error) {
+                console.error('Error initializing app:', error);
                 document.getElementById('word-english').textContent = 'Error loading words';
-                document.getElementById('word-bulgarian').textContent = 'Please check data.html';
+                document.getElementById('word-bulgarian').textContent = 'Please check data.json';
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Start practice button
+            document.getElementById('start-practice').addEventListener('click', showNextWord);
+
+            // Language toggle button
+            document.getElementById('language-toggle').addEventListener('click', () => {
+                if (isWaitingForReveal) return; // Prevent toggle during reveal animation
+                uiManager.toggleLanguageMode();
             });
 
-        // Show a random word
-        function showWord() {
-            if (words.length === 0) {
+            // Reset session button
+            document.getElementById('reset-session').addEventListener('click', resetSession);
+
+            // Success button
+            document.getElementById('success-btn').addEventListener('click', () => {
+                handleWordResult(true);
+            });
+
+            // Fail button
+            document.getElementById('fail-btn').addEventListener('click', () => {
+                handleWordResult(false);
+            });
+
+            // Skip button
+            document.getElementById('skip-btn').addEventListener('click', () => {
+                handleWordSkip();
+            });
+
+            // Copy failed words button
+            document.getElementById('copy-failed-btn').addEventListener('click', copyFailedWords);
+        }
+
+        // Show next word with intelligent selection
+        function showNextWord() {
+            if (isWaitingForReveal) return;
+            
+            currentWord = wordManager.getNextWord();
+            if (!currentWord) {
+                alert('No more words available!');
                 return;
             }
 
-            const index = Math.floor(Math.random() * words.length);
-            currentWord = words[index];
-
-            document.getElementById('word-english').textContent = currentWord.english;
-            document.getElementById('word-bulgarian').textContent = '...';
-
-            // Disable buttons
-            document.getElementById('success-btn').disabled = true;
-            document.getElementById('fail-btn').disabled = true;
-
-            setTimeout(function() {
-                document.getElementById('word-bulgarian').textContent = currentWord.bulgarian;
-                // Enable buttons after reveal
-                document.getElementById('success-btn').disabled = false;
-                document.getElementById('fail-btn').disabled = false;
-            }, 5000);
-        }
-
-        // Update accuracy display
-        function updateAccuracy() {
-            const percentage = totalAttempts > 0 ? Math.round((successes / totalAttempts) * 100) : 0;
-            document.querySelector('.accuracy-display').textContent = `Accuracy: ${percentage}%`;
-        }
-
-        // Update failed words display
-        function updateFailedWords() {
-            const failedText = failedWords.map(word => `${word.bulgarian} - ${word.english}`).join('\n');
-            document.getElementById('failed-words-list').value = failedText;
-        }
-
-        // Setup next button
-        document.getElementById('next').addEventListener('click', showWord);
-
-        // Setup success and fail buttons
-        document.getElementById('success-btn').addEventListener('click', function() {
-            successes++;
-            totalAttempts++;
-            updateAccuracy();
-            this.disabled = true;
-            document.getElementById('fail-btn').disabled = true;
-        });
-
-        document.getElementById('fail-btn').addEventListener('click', function() {
-            if (currentWord) {
-                failedWords.push(currentWord);
-                updateFailedWords();
+            // Hide start button after first word
+            const startBtn = document.getElementById('start-practice');
+            if (startBtn && startBtn.style.display !== 'none') {
+                startBtn.style.display = 'none';
+                // Clear failed words list when starting new session
+                uiManager.clearFailedWordsList();
             }
-            totalAttempts++;
-            updateAccuracy();
-            this.disabled = true;
-            document.getElementById('success-btn').disabled = true;
-        });
 
-        document.getElementById('copy-failed-btn').addEventListener('click', function() {
+            isWaitingForReveal = true;
+            setLanguageToggleEnabled(false); // Disable language toggle during animation
+            
+            // Start word reveal process
+            uiManager.startWordReveal(currentWord, () => {
+                isWaitingForReveal = false;
+                setLanguageToggleEnabled(true); // Re-enable language toggle
+            });
+
+            // Update stats display
+            updateStatsDisplay();
+        }
+
+        // Handle word result (success/fail)
+        function handleWordResult(success) {
+            if (!currentWord || isWaitingForReveal) return;
+
+            // Record the attempt
+            wordManager.recordWordAttempt(currentWord.id, success);
+
+            // Show feedback
+            if (success) {
+                uiManager.showSuccessFeedback();
+            } else {
+                uiManager.showFailureFeedback();
+            }
+
+            // Update displays
+            updateStatsDisplay();
+            updateFailedWordsList();
+
+            // Auto-advance to next word
+            uiManager.autoAdvanceAfterAction(() => {
+                showNextWord();
+            });
+        }
+
+        // Handle word skip
+        function handleWordSkip() {
+            if (!currentWord) return;
+
+            // Stop any ongoing animation if we're skipping
+            if (isWaitingForReveal) {
+                uiManager.stopProgressAnimation();
+                isWaitingForReveal = false;
+                setLanguageToggleEnabled(true); // Re-enable language toggle
+            }
+
+            // Record the skip
+            wordManager.skipWord(currentWord.id);
+
+            // Show feedback
+            uiManager.showSkipFeedback();
+
+            // Update stats display
+            updateStatsDisplay();
+
+            // Auto-advance to next word
+            uiManager.autoAdvanceAfterAction(() => {
+                showNextWord();
+            });
+        }
+
+        // Update statistics display
+        function updateStatsDisplay() {
+            const stats = wordManager.getSessionStats();
+            uiManager.updateStatsDisplay(stats);
+        }
+
+        // Update failed words list
+        function updateFailedWordsList() {
+            const failedWords = wordManager.getFailedWordsInSession();
+            uiManager.updateFailedWordsList(failedWords);
+        }
+
+        // Control language toggle button state
+        function setLanguageToggleEnabled(enabled) {
+            const toggleBtn = document.getElementById('language-toggle');
+            if (toggleBtn) {
+                toggleBtn.disabled = !enabled;
+                toggleBtn.style.opacity = enabled ? '1' : '0.6';
+            }
+        }
+
+        // Reset session statistics
+        function resetSession() {
+            if (confirm('Reset session statistics? This will not affect your long-term word progress.')) {
+                wordManager.resetSessionStats();
+                updateStatsDisplay();
+                uiManager.stopProgressAnimation();
+                
+                // Reset display
+                document.getElementById('word-english').textContent = '—';
+                document.getElementById('word-bulgarian').textContent = '—';
+                currentWord = null;
+                isWaitingForReveal = false;
+                
+                // Disable all action buttons
+                uiManager.setActionButtonsEnabled(false);
+                document.getElementById('skip-btn').disabled = true; // Explicitly disable skip until practice starts
+                
+                // Re-enable language toggle
+                setLanguageToggleEnabled(true);
+                
+                // Show start button again
+                const startBtn = document.getElementById('start-practice');
+                if (startBtn) {
+                    startBtn.style.display = 'inline-block';
+                }
+                
+                // Clear failed words list
+                uiManager.clearFailedWordsList();
+            }
+        }
+
+        // Copy failed words to clipboard
+        function copyFailedWords() {
             const textarea = document.getElementById('failed-words-list');
-            textarea.select();
-            document.execCommand('copy');
-            alert('Failed words copied to clipboard!');
-        });
+            if (textarea.value) {
+                textarea.select();
+                document.execCommand('copy');
+                alert('Words to review copied to clipboard!');
+            } else {
+                alert('No words to copy yet. Practice some words first!');
+            }
+        }
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 </html>

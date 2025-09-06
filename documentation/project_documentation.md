@@ -1,78 +1,108 @@
 # Bulgarian Language Learning App - Project Documentation
 
 ## Overview
-This is a web-based Bulgarian language learning application consisting of HTML, CSS, and JavaScript files. The app helps users practice Bulgarian vocabulary through interactive exercises and manage a personal dictionary.
+A web-based Bulgarian language learning application built with vanilla JavaScript. Features intelligent word prioritization, progress tracking, and seamless vocabulary management.
 
 ## Architecture
-The application is built using vanilla JavaScript with no external dependencies. It uses:
-- HTML for structure
-- CSS for styling with CSS variables for theming
-- JavaScript for functionality, data loading, and user interactions
+- **Frontend**: Pure HTML, CSS, JavaScript (no frameworks)
+- **Data**: JSON-based word storage with statistics tracking
+- **Storage**: localStorage for persistence + optional GitHub sync
+- **Theme**: Dark mode with modern UI components
 
-## File Descriptions
+## File Structure
 
-### Core Files
-- **index.html**: Entry point with welcome screen and navigation
-- **practice.html**: Interactive practice mode with word display and feedback
-- **dictionary.html**: Dictionary management interface
-- **data.html**: Contains vocabulary data in a structured format
-- **style.css**: Centralized styling with dark theme
+### Core Application Files
+- **index.html**: Welcome page and navigation
+- **practice.html**: Interactive practice mode with intelligent word selection
+- **dictionary.html**: Word management (add, search, download)
+- **style.css**: Centralized styling with CSS variables
+
+### JavaScript Modules
+- **js/wordManager.js**: Word selection, prioritization, and statistics
+- **js/uiManager.js**: UI interactions, animations, and user preferences
 
 ### Data Files
-- **data.html**: Primary data source with words in "Bulgarian - English" format
+- **data.json**: Primary vocabulary database (154+ Bulgarian-English word pairs)
 
 ### Documentation
-- **README.md**: Main project README
-- **documentation/project_documentation.md**: This detailed documentation
+- **README.md**: Project overview
+- **documentation/project_documentation.md**: Technical documentation
 
 ## Key Features
 
-### Practice Mode
-- Displays random English words
-- Shows Bulgarian translation after 5 seconds
-- Success/Fail buttons for user feedback
-- Real-time accuracy percentage calculation
-- Failed words tracking with copy functionality
-- Buttons disabled until translation is revealed
+### Intelligent Practice Mode
+- **Smart Word Selection**: Prioritizes difficult words, deprioritizes mastered ones
+- **Language Toggle**: Switch between Bulgarian→English and English→Bulgarian modes
+- **Progress Tracking**: Success/Fail/Skip statistics with accuracy percentage
+- **Auto-Advancement**: Automatic progression after user feedback
+- **Skip Functionality**: Skip words without penalty, see them again later
+- **Visual Progress**: Animated countdown timer for translation reveal
 
-### Dictionary
-- Search functionality across Bulgarian and English terms
-- Add new word pairs with duplicate prevention
-- Automatic saving to localStorage for session persistence
-- GitHub integration to update data.html on the repository
-- Table display with hover effects
+### Enhanced Dictionary
+- **Clean Interface**: Focus on words without distracting statistics
+- **Fast Search**: Real-time filtering across Bulgarian and English terms
+- **Easy Add**: Add new word pairs with duplicate detection
+- **Export**: Download complete vocabulary as text file
+- **GitHub Sync**: Optional cloud synchronization
 
-### Data Management
-- Loads words from data.html
-- Parses text format: "bulgarian - english"
-- In-memory storage for current session
+### Data Intelligence
+- **Priority Algorithm**: 
+  - Never-shown words: Highest priority
+  - High error rate words: Increased priority
+  - High success rate words: Decreased priority
+  - Time-based boost for words not seen recently
+- **Statistics Tracking**: Success rate, attempts, last shown date per word
+- **Session Management**: Track current session separately from long-term stats
 
-## Code Structure
+## User Experience Flow
 
-### JavaScript Patterns
-- Async/await for data loading
-- DOM manipulation for dynamic content
-- Event listeners for user interactions
-- Array methods for data processing
+### Practice Session
+1. **Start Practice** → Intelligent word selection begins
+2. **Word Display** → Primary language shown with progress bar
+3. **Translation Reveal** → Secondary language appears after 5 seconds
+4. **User Feedback** → Choose Success ✓ / Fail ✗ / Skip ⏭
+5. **Auto-Advance** → Next word selected intelligently, cycle repeats
 
-### CSS Architecture
+### Word Management
+- **Dictionary View** → Browse all vocabulary with search
+- **Add Words** → Simple Bulgarian-English input with validation
+- **Download** → Export personal vocabulary for backup/sharing
+
+## Technical Implementation
+
+### Word Prioritization Algorithm
+```javascript
+Priority = BaseWeight(10) + NeverShown(50) + ErrorRate(30) + 
+           TimeBoost(10) - SuccessRate(20)
+```
+
+### Data Persistence
+- **localStorage**: Word statistics, user preferences, session data
+- **JSON Format**: Structured data with metadata for each word
+- **GitHub API**: Optional cloud sync for vocabulary updates
+
+### Performance Features
+- **Weighted Random Selection**: Top 30% priority words for variety
+- **Session Tracking**: Prevents repetition until full vocabulary cycle
+- **Smart Reset**: Automatic session refresh when all words shown
+
+## Browser Compatibility
+- Modern browsers with ES6+ support
+- localStorage API required
+- fetch API for data loading
+- CSS Grid and Flexbox for layout
+
+## Development Notes
+- No build process required - direct file serving
+- Modular JavaScript architecture for maintainability
 - CSS variables for consistent theming
-- Responsive design with media queries
-- Hover and active states for interactivity
-- Card-based layout with shadows
+- Responsive design for mobile/desktop use
 
-## Data Flow
-1. App loads data from data.html on page load
-2. Words parsed into array of objects: {bulgarian, english}
-3. Practice mode selects random words from array
-4. User interactions update local state (accuracy tracking, failed words)
-5. Dictionary operations modify the words array, save to localStorage, and update data.html on GitHub
-6. Failed words are tracked separately for review
-7. Duplicate words are prevented in dictionary additions
-
-## Recent Modifications
-- Removed unused code from index.html (practice/dict scripts not needed)
-- Added accuracy tracking to practice.html
+## Hosting & Deployment
+- Works as static files (can be hosted on GitHub Pages, Netlify, etc.)
+- Add word functionality works locally via localStorage
+- GitHub sync requires PAT token for write access to repository
+- All data persists in browser localStorage for offline functionality
 - Implemented success/fail feedback system
 - Created documentation folder
 - Updated README with comprehensive project info

@@ -1,0 +1,1698 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "bulgarian": "животно",
+      "english": "animal",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 2,
+      "bulgarian": "почти всичко",
+      "english": "almost everything",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 3,
+      "bulgarian": "невероятно",
+      "english": "unbelievable",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 4,
+      "bulgarian": "вероятно",
+      "english": "probably",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 5,
+      "bulgarian": "не все още",
+      "english": "not yet",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 6,
+      "bulgarian": "примерно",
+      "english": "for example",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 7,
+      "bulgarian": "пример",
+      "english": "example",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 8,
+      "bulgarian": "преди всичко",
+      "english": "before all",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 9,
+      "bulgarian": "миналата",
+      "english": "previous",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 10,
+      "bulgarian": "преди",
+      "english": "before",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 11,
+      "bulgarian": "след",
+      "english": "after",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 12,
+      "bulgarian": "преди малко",
+      "english": "a moment ago",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 13,
+      "bulgarian": "излизам",
+      "english": "go out",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 14,
+      "bulgarian": "вземам",
+      "english": "take",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 15,
+      "bulgarian": "давам",
+      "english": "give",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 16,
+      "bulgarian": "отивам",
+      "english": "go",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 17,
+      "bulgarian": "използвам",
+      "english": "use",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 18,
+      "bulgarian": "слагам",
+      "english": "put",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 19,
+      "bulgarian": "ходя",
+      "english": "walk",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 20,
+      "bulgarian": "бягам",
+      "english": "run",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 21,
+      "bulgarian": "карам",
+      "english": "drive",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 22,
+      "bulgarian": "яздя",
+      "english": "ride",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 23,
+      "bulgarian": "проклятие",
+      "english": "curse",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 24,
+      "bulgarian": "клетва",
+      "english": "vow",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 25,
+      "bulgarian": "опитвам се",
+      "english": "I'm trying",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 26,
+      "bulgarian": "бавнo",
+      "english": "slow",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 27,
+      "bulgarian": "може ли",
+      "english": "can I / may I",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 28,
+      "bulgarian": "да платя",
+      "english": "to pay",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 29,
+      "bulgarian": "плащам",
+      "english": "pay",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 30,
+      "bulgarian": "стъпих",
+      "english": "I stepped",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 31,
+      "bulgarian": "влизам",
+      "english": "enter",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 32,
+      "bulgarian": "изхвърлям",
+      "english": "throw away",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 33,
+      "bulgarian": "боклук",
+      "english": "trash",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 34,
+      "bulgarian": "казвам",
+      "english": "say",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 35,
+      "bulgarian": "говоря",
+      "english": "speak",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 36,
+      "bulgarian": "уча",
+      "english": "study / learn",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 37,
+      "bulgarian": "след малко",
+      "english": "in a little while",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 38,
+      "bulgarian": "тренирам",
+      "english": "train / practice",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 39,
+      "bulgarian": "трябва",
+      "english": "must / should",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 40,
+      "bulgarian": "сметки",
+      "english": "bills",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 41,
+      "bulgarian": "горе-долу",
+      "english": "more or less",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 42,
+      "bulgarian": "уморен съм",
+      "english": "I am tired",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 43,
+      "bulgarian": "трябва да тръгвам",
+      "english": "I must go",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 44,
+      "bulgarian": "отново",
+      "english": "again",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 45,
+      "bulgarian": "повтори",
+      "english": "repeat",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 46,
+      "bulgarian": "чух",
+      "english": "I heard",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 47,
+      "bulgarian": "чувам",
+      "english": "I hear",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 48,
+      "bulgarian": "защото",
+      "english": "because",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 49,
+      "bulgarian": "защо",
+      "english": "why",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 50,
+      "bulgarian": "гладен съм",
+      "english": "I am hungry",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 51,
+      "bulgarian": "отивам да ям",
+      "english": "I am going to eat",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 52,
+      "bulgarian": "да ям",
+      "english": "to eat",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 53,
+      "bulgarian": "зает",
+      "english": "busy",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 54,
+      "bulgarian": "звъня",
+      "english": "call (by phone)",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 55,
+      "bulgarian": "звънец",
+      "english": "bell",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 56,
+      "bulgarian": "обикновено",
+      "english": "usually",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 57,
+      "bulgarian": "рядко",
+      "english": "seldom",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 58,
+      "bulgarian": "често",
+      "english": "often",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 59,
+      "bulgarian": "понякога",
+      "english": "sometimes",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 60,
+      "bulgarian": "лук",
+      "english": "onion",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 61,
+      "bulgarian": "по-късно",
+      "english": "later",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 62,
+      "bulgarian": "къпя се",
+      "english": "taking a shower",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 63,
+      "bulgarian": "чистя",
+      "english": "clean",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 64,
+      "bulgarian": "мия",
+      "english": "wash",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 65,
+      "bulgarian": "постоянно",
+      "english": "all the time",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 66,
+      "bulgarian": "заедно",
+      "english": "together",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 67,
+      "bulgarian": "удоволствие",
+      "english": "pleasure",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 68,
+      "bulgarian": "за мен е удоволствие",
+      "english": "it's a pleasure for me",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 69,
+      "bulgarian": "подготвям се",
+      "english": "I'm getting ready",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 70,
+      "bulgarian": "гласове",
+      "english": "voices",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 71,
+      "bulgarian": "глас",
+      "english": "voice",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 72,
+      "bulgarian": "тежък",
+      "english": "heavy",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 73,
+      "bulgarian": "лек",
+      "english": "light (weight)",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 74,
+      "bulgarian": "тежест",
+      "english": "weight",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 75,
+      "bulgarian": "светлина",
+      "english": "light (illumination)",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 76,
+      "bulgarian": "тъмнина",
+      "english": "darkness",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 77,
+      "bulgarian": "тъмно",
+      "english": "dark",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 78,
+      "bulgarian": "посетя",
+      "english": "visit",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 79,
+      "bulgarian": "хапче",
+      "english": "pill / medicine",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 80,
+      "bulgarian": "гърло",
+      "english": "throat",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 81,
+      "bulgarian": "дълбоко",
+      "english": "deep",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 82,
+      "bulgarian": "плитко",
+      "english": "shallow",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 83,
+      "bulgarian": "случай",
+      "english": "case",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 84,
+      "bulgarian": "промени",
+      "english": "changes",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 85,
+      "bulgarian": "заменям",
+      "english": "replace",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 86,
+      "bulgarian": "твърд",
+      "english": "hard",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 87,
+      "bulgarian": "меко",
+      "english": "soft",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 88,
+      "bulgarian": "замяна",
+      "english": "exchange",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 89,
+      "bulgarian": "промяна",
+      "english": "change",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 90,
+      "bulgarian": "по-рано",
+      "english": "earlier",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 91,
+      "bulgarian": "будя се",
+      "english": "wake up",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 92,
+      "bulgarian": "събуждам се",
+      "english": "wake up",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 93,
+      "bulgarian": "много",
+      "english": "a lot/many",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 94,
+      "bulgarian": "започвам",
+      "english": "begin",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 95,
+      "bulgarian": "колкото",
+      "english": "as much as",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 96,
+      "bulgarian": "толкова",
+      "english": "so much",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 97,
+      "bulgarian": "интересно",
+      "english": "interesting",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 98,
+      "bulgarian": "още",
+      "english": "more",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 99,
+      "bulgarian": "още малко",
+      "english": "a little more",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 100,
+      "bulgarian": "разрешително",
+      "english": "permit",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 101,
+      "bulgarian": "разрешение",
+      "english": "permission",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 102,
+      "bulgarian": "пътувам",
+      "english": "travel",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 103,
+      "bulgarian": "отрова",
+      "english": "poison",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 104,
+      "bulgarian": "объркан",
+      "english": "confused",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 105,
+      "bulgarian": "огладнявам",
+      "english": "getting hungry",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 106,
+      "bulgarian": "маймуна",
+      "english": "monkey",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 107,
+      "bulgarian": "мръсен/мръсна",
+      "english": "dirty",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 108,
+      "bulgarian": "чист",
+      "english": "clean",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 109,
+      "bulgarian": "скоро",
+      "english": "soon",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 110,
+      "bulgarian": "най-скоро време",
+      "english": "ASAP",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 111,
+      "bulgarian": "скорост",
+      "english": "speed",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 112,
+      "bulgarian": "уважение",
+      "english": "respect",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 113,
+      "bulgarian": "бележка",
+      "english": "note",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 114,
+      "bulgarian": "последно/последен",
+      "english": "last",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 115,
+      "bulgarian": "чиния",
+      "english": "plate",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 116,
+      "bulgarian": "лъжица",
+      "english": "spoon",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 117,
+      "bulgarian": "вилица",
+      "english": "fork",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 118,
+      "bulgarian": "нож",
+      "english": "knife",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 119,
+      "bulgarian": "приключвам",
+      "english": "finish",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 120,
+      "bulgarian": "лъжа",
+      "english": "lie",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 121,
+      "bulgarian": "лъжи",
+      "english": "lies",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 122,
+      "bulgarian": "колко тежи",
+      "english": "what is the weight",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 123,
+      "bulgarian": "приложение",
+      "english": "attachment / app",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 124,
+      "bulgarian": "прилагам",
+      "english": "attach",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 125,
+      "bulgarian": "точност",
+      "english": "accuracy",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 126,
+      "bulgarian": "прицелвам",
+      "english": "aim",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 127,
+      "bulgarian": "досега",
+      "english": "so far",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 128,
+      "bulgarian": "следващ",
+      "english": "next",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 129,
+      "bulgarian": "зависи",
+      "english": "depends",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 130,
+      "bulgarian": "гърди",
+      "english": "chest / breast",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 131,
+      "bulgarian": "заключвам",
+      "english": "lock",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 132,
+      "bulgarian": "отключвам",
+      "english": "unlock",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 133,
+      "bulgarian": "гълтам",
+      "english": "swallow",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 134,
+      "bulgarian": "фактура",
+      "english": "invoice",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 135,
+      "bulgarian": "възможно",
+      "english": "possible",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 136,
+      "bulgarian": "невъзможно",
+      "english": "impossible",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 137,
+      "bulgarian": "успех",
+      "english": "success",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 138,
+      "bulgarian": "успешен",
+      "english": "successful",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 139,
+      "bulgarian": "ресто",
+      "english": "change (money back)",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 140,
+      "bulgarian": "помня",
+      "english": "remember",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 141,
+      "bulgarian": "колкото трябва",
+      "english": "as much as needed",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 142,
+      "bulgarian": "главоболие",
+      "english": "headache",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 143,
+      "bulgarian": "отвън",
+      "english": "outside",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 144,
+      "bulgarian": "представиш",
+      "english": "imagine",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 145,
+      "bulgarian": "търпение",
+      "english": "patience",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 146,
+      "bulgarian": "търпелив",
+      "english": "patient",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 147,
+      "bulgarian": "надежда",
+      "english": "hope",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 148,
+      "bulgarian": "надявам се",
+      "english": "I am hoping",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 149,
+      "bulgarian": "режа",
+      "english": "cut",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 150,
+      "bulgarian": "порязах се",
+      "english": "I cut myself",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 151,
+      "bulgarian": "по-скоро не",
+      "english": "I'd rather not",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 152,
+      "bulgarian": "идва",
+      "english": "coming",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 153,
+      "bulgarian": "радиатор",
+      "english": "heater / radiator",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 154,
+      "bulgarian": "пиша",
+      "english": "write",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    }
+  ]
+}

@@ -19,10 +19,10 @@
   <main class="container">
     <section id="welcome" class="card pane">
       <h2>Welcome to Bulgarian Language Trainer</h2>
-      <p class="small-muted">Learn Bulgarian vocabulary with this simple trainer app:</p>
+      <p class="small-muted">Learn Bulgarian vocabulary with this trainer app:</p>
       <ul class="feature-list">
         <li>Practice mode: Test your knowledge with random words</li>
-        <li>Dictionary: View all words and add new ones</li>
+        <li>Dictionary: View all words and download dictionary data</li>
       </ul>
       <div class="welcome-actions">
         <button onclick="location.href='practice.html'" class="btn">Start Practice</button>
@@ -32,7 +32,7 @@
   </main>
 
 <script>
-// App plan: load data.html -> parse lines -> manage in-memory array -> allow adds -> download updated txt
+// App plan: load data.json -> intelligent word selection -> track statistics -> manage progress
 
 const TABS = Array.from(document.querySelectorAll('.tab'));
 const PANES = document.querySelectorAll('.pane');
