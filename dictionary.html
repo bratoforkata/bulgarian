@@ -80,7 +80,16 @@ async function loadData() {
         const storedWords = localStorage.getItem('bulgarian-words');
         if (storedWords) {
             const additionalWords = JSON.parse(storedWords);
-            words = [...additionalWords, ...words]; // Add stored words first
+            words = [...additionalWords, ...words];
+            
+            // Remove duplicates based on case-insensitive comparison
+            const seen = new Set();
+            words = words.filter(word => {
+                const key = word.bulgarian.toLowerCase() + '|' + word.english.toLowerCase();
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            });
         }
         
         renderDictionary();
@@ -171,8 +180,8 @@ async function addWord(bulgarian, english) {
         const updatedContent = existingContent + newLine;
         const newFullContent = content.substring(0, divStart) + updatedContent + content.substring(end);
 
-        // Encode back to base64
-        const newEncoded = btoa(newFullContent);
+        // Encode back to base64 (handle Unicode characters)
+        const newEncoded = btoa(unescape(encodeURIComponent(newFullContent)));
 
         // Update the file on GitHub
         const updateResponse = await fetch(url, {
