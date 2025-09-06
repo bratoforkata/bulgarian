@@ -122,6 +122,12 @@ async function addWord(bulgarian, english) {
         return;
     }
 
+    // Check for duplicates
+    if (words.some(w => w.bulgarian.toLowerCase() === bulgarian.toLowerCase() && w.english.toLowerCase() === english.toLowerCase())) {
+        alert('This word pair already exists in the dictionary');
+        return;
+    }
+
     // Add to beginning of array so it's visible immediately
     words.unshift({ bulgarian, english });
     renderDictionary();
@@ -178,8 +184,7 @@ async function addWord(bulgarian, english) {
             body: JSON.stringify({
                 message: `Add word: ${bulgarian} - ${english}`,
                 content: newEncoded,
-                sha: sha,
-                branch: 'adding-f-word'
+                sha: sha
             })
         });
 

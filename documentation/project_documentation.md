@@ -19,7 +19,6 @@ The application is built using vanilla JavaScript with no external dependencies.
 - **style.css**: Centralized styling with dark theme
 
 ### Data Files
-- **Bulgarian.txt**: Plain text backup of vocabulary pairs
 - **data.html**: Primary data source with words in "Bulgarian - English" format
 
 ### Documentation
@@ -38,8 +37,9 @@ The application is built using vanilla JavaScript with no external dependencies.
 
 ### Dictionary
 - Search functionality across Bulgarian and English terms
-- Add new word pairs
-- Save functionality to download updated data.html for persistence
+- Add new word pairs with duplicate prevention
+- Automatic saving to localStorage for session persistence
+- GitHub integration to update data.html on the repository
 - Table display with hover effects
 
 ### Data Management
@@ -66,8 +66,9 @@ The application is built using vanilla JavaScript with no external dependencies.
 2. Words parsed into array of objects: {bulgarian, english}
 3. Practice mode selects random words from array
 4. User interactions update local state (accuracy tracking, failed words)
-5. Dictionary operations modify the words array and save to localStorage
+5. Dictionary operations modify the words array, save to localStorage, and update data.html on GitHub
 6. Failed words are tracked separately for review
+7. Duplicate words are prevented in dictionary additions
 
 ## Recent Modifications
 - Removed unused code from index.html (practice/dict scripts not needed)
@@ -78,6 +79,10 @@ The application is built using vanilla JavaScript with no external dependencies.
 - Added localStorage persistence to dictionary.html
 - Added failed words tracking and copy functionality to practice.html
 - Fixed dictionary loading with localStorage fallback
+- Implemented GitHub API integration for updating data.html
+- Added duplicate prevention in dictionary additions
+- Removed hardcoded branch names and unnecessary files
+- Cleaned up code across all files
 
 ## Future Enhancements
 - Persistent storage (localStorage/IndexedDB)
