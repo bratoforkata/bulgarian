@@ -26,8 +26,13 @@
             </div>
 
             <!-- Search section -->
-            <div class="controls" style="margin-top: 16px">
+            <div class="controls search-controls">
                 <input id="filter" class="input" placeholder="Search words...">
+            </div>
+
+            <!-- Download section -->
+            <div class="controls download-controls">
+                <button id="download-btn" class="btn btn-secondary">Download Study File</button>
             </div>
 
             <!-- Word list -->
@@ -209,6 +214,33 @@ async function addWord(bulgarian, english) {
     document.getElementById('dict-add-eng').value = '';
 }
 
+// Download study file
+function downloadStudyFile() {
+    if (words.length === 0) {
+        alert('No words available to download');
+        return;
+    }
+
+    // Create the content for the study file
+    const content = words.map(word => `${word.bulgarian} - ${word.english}`).join('\n');
+
+    // Create a blob with the content
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+
+    // Create a download link
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'bulgarian-study-words.txt';
+
+    // Trigger the download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Clean up the URL object
+    URL.revokeObjectURL(link.href);
+}
+
 // Event Listeners
 document.getElementById('filter').addEventListener('input', (e) => {
     renderDictionary(e.target.value.trim());
@@ -218,6 +250,10 @@ document.getElementById('dict-add-btn').addEventListener('click', async () => {
     const bulWord = document.getElementById('dict-add-bul').value.trim();
     const engWord = document.getElementById('dict-add-eng').value.trim();
     await addWord(bulWord, engWord);
+});
+
+document.getElementById('download-btn').addEventListener('click', () => {
+    downloadStudyFile();
 });
 
 // Initialize

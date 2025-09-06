@@ -38,9 +38,12 @@ const TABS = Array.from(document.querySelectorAll('.tab'));
 const PANES = document.querySelectorAll('.pane');
 function showTab(name){
   TABS.forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
-  PANES.forEach(p=>p.style.display = p.id===name ? '' : 'none');
+  PANES.forEach(p=>p.classList.toggle('active', p.id===name));
 }
 TABS.forEach(t=>t.addEventListener('click', ()=>showTab(t.dataset.tab)));
+
+// Initialize the welcome tab on page load
+showTab('welcome');
 </script>
 </body>
 </html>

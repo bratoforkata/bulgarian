@@ -61,6 +61,8 @@ body{
 }
 
 .controls{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.search-controls{margin-top: 16px}
+.download-controls{margin-top: 16px; justify-content: flex-end}
 .btn{
     background:var(--accent);
     color:#071229;
@@ -294,5 +296,14 @@ body{
     .practice-actions {
         margin-left: 0;
     }
+}
+
+/* Pane visibility for tabs */
+.pane {
+    display: none;
+}
+
+.pane.active {
+    display: block;
 }
 
