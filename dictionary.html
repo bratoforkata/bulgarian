@@ -18,20 +18,9 @@
 
     <main class="container">
         <div class="card">
-            <!-- Add new word section -->
-            <div class="dictionary-controls controls">
-                <input id="dict-add-bul" class="input" placeholder="Bulgarian word">
-                <input id="dict-add-eng" class="input" placeholder="English translation">
-                <button id="dict-add-btn" class="btn">Add to dictionary</button>
-            </div>
-
-            <!-- Search section -->
-            <div class="controls search-controls">
+            <!-- Controls section - search and download on same line -->
+            <div class="controls dictionary-controls">
                 <input id="filter" class="input" placeholder="Search words...">
-            </div>
-
-            <!-- Download section -->
-            <div class="controls download-controls">
                 <button id="download-btn" class="btn btn-secondary">Download Study File</button>
             </div>
 
@@ -51,41 +40,36 @@
     </main>
 
 <script>
-let words = []; // {bulgarian, english}
+let words = []; // {id, bulgarian, english, stats}
 
-// Parse text content into words array
-function parseText(text) {
-    return text.split('\n')
-        .map(line => line.trim())
-        .filter(line => line && line.includes(' - '))
-        .map(line => {
-            const parts = line.split(' - ');
-            return {
-                bulgarian: parts[0].trim(),
-                english: parts.slice(1).join(' - ').trim()
-            };
-        });
-}
-
-// Load data from data.html and localStorage
+// Load data from data.json
 async function loadData() {
     try {
-        const response = await fetch('data.html');
-        if (!response.ok) throw new Error('Could not load data.html');
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error('Could not load data.json');
         
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const el = doc.getElementById('dictionary-data');
-        if (!el) throw new Error('Dictionary data not found');
+        const data = await response.json();
+        words = data.words || [];
         
-        words = parseText(el.textContent || el.innerText);
-        
-        // Load additional words from localStorage
+        // Load additional words from localStorage (for backwards compatibility)
         const storedWords = localStorage.getItem('bulgarian-words');
         if (storedWords) {
             const additionalWords = JSON.parse(storedWords);
-            words = [...additionalWords, ...words];
+            
+            // Convert old format to new format and add to words
+            const newWords = additionalWords.map((word, index) => ({
+                id: words.length + index + 1000, // Avoid ID conflicts
+                bulgarian: word.bulgarian,
+                english: word.english,
+                stats: {
+                    attempts: 0,
+                    successes: 0,
+                    lastShown: null,
+                    successRate: 0
+                }
+            }));
+            
+            words = [...words, ...newWords];
             
             // Remove duplicates based on case-insensitive comparison
             const seen = new Set();
@@ -107,7 +91,7 @@ async function loadData() {
             words = JSON.parse(storedWords);
             renderDictionary();
         } else {
-            alert('Failed to load dictionary data. Please make sure data.html is available or add some words first.');
+            alert('Failed to load dictionary data. Please make sure data.json is available or add some words first.');
         }
     }
 }
@@ -124,94 +108,15 @@ function renderDictionary(filterText = '') {
             word.english.toLowerCase().includes(searchText)
         );
     }
+    
     dictList.innerHTML = displayWords
-        .map(word => `<tr><td>${word.bulgarian}</td><td>${word.english}</td></tr>`)
+        .map(word => `
+            <tr>
+                <td>${word.bulgarian}</td>
+                <td>${word.english}</td>
+            </tr>
+        `)
         .join('');
-}
-
-// Add a new word
-async function addWord(bulgarian, english) {
-    if (!bulgarian || !english) {
-        alert('Please enter both Bulgarian and English words');
-        return;
-    }
-
-    // Check for duplicates
-    if (words.some(w => w.bulgarian.toLowerCase() === bulgarian.toLowerCase() && w.english.toLowerCase() === english.toLowerCase())) {
-        alert('This word pair already exists in the dictionary');
-        return;
-    }
-
-    // Add to beginning of array so it's visible immediately
-    words.unshift({ bulgarian, english });
-    renderDictionary();
-
-    // Save to localStorage
-    const storedWords = localStorage.getItem('bulgarian-words') || '[]';
-    const additionalWords = JSON.parse(storedWords);
-    additionalWords.unshift({ bulgarian, english });
-    localStorage.setItem('bulgarian-words', JSON.stringify(additionalWords));
-
-    // Prompt for PAT token
-    const pat = prompt('Enter your GitHub PAT token to update data.html:');
-    if (!pat) {
-        alert('PAT token required to update data.html');
-        return;
-    }
-
-    try {
-        // Fetch current data.html from GitHub
-        const url = 'https://api.github.com/repos/bratoforkata/bulgarian/contents/data.html';
-        const headers = { Authorization: `token ${pat}` };
-        const response = await fetch(url, { headers });
-        if (!response.ok) throw new Error('Failed to fetch data.html from GitHub');
-
-        const data = await response.json();
-        const sha = data.sha;
-        const content = atob(data.content); // Decode base64
-
-        // Find and update the dictionary-data div content
-        const divStartTag = '<div id="dictionary-data">';
-        const divEndTag = '</div>';
-        const start = content.indexOf(divStartTag);
-        if (start === -1) throw new Error('Dictionary data div not found');
-
-        const divStart = start + divStartTag.length;
-        const end = content.indexOf(divEndTag, divStart);
-        if (end === -1) throw new Error('End of dictionary data div not found');
-
-        const existingContent = content.substring(divStart, end);
-        const newLine = '\n' + bulgarian + ' - ' + english;
-        const updatedContent = existingContent + newLine;
-        const newFullContent = content.substring(0, divStart) + updatedContent + content.substring(end);
-
-        // Encode back to base64 (handle Unicode characters)
-        const newEncoded = btoa(unescape(encodeURIComponent(newFullContent)));
-
-        // Update the file on GitHub
-        const updateResponse = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                Authorization: `token ${pat}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: `Add word: ${bulgarian} - ${english}`,
-                content: newEncoded,
-                sha: sha
-            })
-        });
-
-        if (!updateResponse.ok) throw new Error('Failed to update data.html on GitHub');
-
-        alert('Word added to data.html on GitHub successfully!');
-    } catch (error) {
-        alert('Error updating data.html: ' + error.message);
-    }
-
-    // Clear input fields
-    document.getElementById('dict-add-bul').value = '';
-    document.getElementById('dict-add-eng').value = '';
 }
 
 // Download study file
@@ -244,12 +149,6 @@ function downloadStudyFile() {
 // Event Listeners
 document.getElementById('filter').addEventListener('input', (e) => {
     renderDictionary(e.target.value.trim());
-});
-
-document.getElementById('dict-add-btn').addEventListener('click', async () => {
-    const bulWord = document.getElementById('dict-add-bul').value.trim();
-    const engWord = document.getElementById('dict-add-eng').value.trim();
-    await addWord(bulWord, engWord);
 });
 
 document.getElementById('download-btn').addEventListener('click', () => {

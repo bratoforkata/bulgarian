@@ -63,6 +63,7 @@ body{
 .controls{display:flex;gap:10px;align-items:center;margin-bottom:14px}
 .search-controls{margin-top: 16px}
 .download-controls{margin-top: 16px; justify-content: flex-end}
+.dictionary-controls{margin-top: 16px; justify-content: space-between; align-items: center}
 .btn{
     background:var(--accent);
     color:#071229;
@@ -126,7 +127,7 @@ body{
 }
 
 .table-container {
-    max-height: 420px;
+    max-height: 600px; /* Increased to show ~15 words */
     overflow: auto;
     border-radius: var(--radius);
     border: 1px solid rgba(255,255,255,0.06);
@@ -272,6 +273,7 @@ body{
     font-family: inherit;
     font-size: 14px;
     resize: vertical;
+    margin-bottom: 12px;
 }
 
 #failed-words-list:focus {
@@ -305,5 +307,141 @@ body{
 
 .pane.active {
     display: block;
+}
+
+/* Practice controls */
+.practice-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Progress bar styles */
+.progress-container {
+    margin-bottom: 16px;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    width: 0%;
+    transition: none;
+    border-radius: 3px;
+}
+
+/* Stats details */
+.stats-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.stat-label {
+    color: var(--muted);
+}
+
+.stat-value {
+    color: var(--accent-2);
+    font-weight: 600;
+}
+
+/* Feedback message */
+.feedback-message {
+    text-align: center;
+    padding: 8px;
+    margin-top: 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feedback-message.success {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    color: var(--accent-2);
+}
+
+.feedback-message.failure {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.feedback-message.skip {
+    background: rgba(107, 114, 128, 0.1);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+    color: var(--muted);
+}
+
+/* Enhanced button styles */
+.success-btn {
+    background: var(--accent-2) !important;
+    color: #0f1724 !important;
+}
+
+.success-btn:hover:not(:disabled) {
+    background: #2dd4aa !important;
+}
+
+.fail-btn {
+    background: #ef4444 !important;
+    color: white !important;
+}
+
+.fail-btn:hover:not(:disabled) {
+    background: #dc2626 !important;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--muted) !important;
+    color: rgba(255,255,255,0.5) !important;
+}
+
+/* Language toggle button */
+#language-toggle {
+    min-width: 200px;
+    font-size: 14px;
+}
+
+/* Reset button */
+#reset-session {
+    color: #ff6b6b;
+    background: transparent;
+    border: 1px solid rgba(255, 107, 107, 0.4);
+    font-weight: 600;
+}
+
+#reset-session:hover {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff5252;
+    border-color: rgba(255, 107, 107, 0.6);
 }
 
