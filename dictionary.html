@@ -180,8 +180,8 @@ async function addWord(bulgarian, english) {
         const updatedContent = existingContent + newLine;
         const newFullContent = content.substring(0, divStart) + updatedContent + content.substring(end);
 
-        // Encode back to base64 (handle Unicode characters)
-        const newEncoded = btoa(unescape(encodeURIComponent(newFullContent)));
+        // Encode back to base64 (proper UTF-8 handling)
+        const newEncoded = btoa(encodeURIComponent(newFullContent).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
 
         // Update the file on GitHub
         const updateResponse = await fetch(url, {
