@@ -1693,6 +1693,226 @@
         "lastShown": null,
         "successRate": 0
       }
+    },
+    {
+      "id": 155,
+      "bulgarian": "избор",
+      "english": "choice",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 156,
+      "bulgarian": "дрямка",
+      "english": "nap",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 157,
+      "bulgarian": "упражнявам се",
+      "english": "practise myself",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 158,
+      "bulgarian": "приятел",
+      "english": "friend",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 159,
+      "bulgarian": "работа",
+      "english": "work",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 160,
+      "bulgarian": "работя",
+      "english": "working (verb)",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 161,
+      "bulgarian": "възможност",
+      "english": "opportunity",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 162,
+      "bulgarian": "истина",
+      "english": "truth",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 163,
+      "bulgarian": "щастие",
+      "english": "happiness",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 164,
+      "bulgarian": "щастлив",
+      "english": "happy",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 165,
+      "bulgarian": "усилие",
+      "english": "effort",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 166,
+      "bulgarian": "провал",
+      "english": "failure",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 167,
+      "bulgarian": "опасност",
+      "english": "danger",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 168,
+      "bulgarian": "опасен",
+      "english": "dangerous",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 169,
+      "bulgarian": "желание",
+      "english": "desire / wish",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 170,
+      "bulgarian": "богат",
+      "english": "rich",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 171,
+      "bulgarian": "подкрепа",
+      "english": "support",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 172,
+      "bulgarian": "мнение",
+      "english": "opinion",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 173,
+      "bulgarian": "навик",
+      "english": "habit",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
+    },
+    {
+      "id": 174,
+      "bulgarian": "влияние",
+      "english": "influence",
+      "stats": {
+        "attempts": 0,
+        "successes": 0,
+        "lastShown": null,
+        "successRate": 0
+      }
     }
   ]
 }
