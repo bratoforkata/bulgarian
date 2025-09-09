@@ -20,9 +20,6 @@ class WordManager {
             const data = await response.json();
             this.words = data.words;
             
-            // Load stats from localStorage
-            this.loadStatsFromStorage();
-            
             console.log(`Loaded ${this.words.length} words`);
             return this.words;
         } catch (error) {
