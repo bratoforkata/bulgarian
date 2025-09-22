@@ -18,7 +18,21 @@ class WordManager {
         try {
             const response = await fetch('data.json');
             const data = await response.json();
-            this.words = data.words;
+            let words = data.words;
+            
+            // Remove duplicates based on bulgarian|english combination
+            const seen = new Set();
+            words = words.filter(word => {
+                const key = word.bulgarian.toLowerCase() + '|' + word.english.toLowerCase();
+                if (seen.has(key)) {
+                    console.warn(`Duplicate word removed: ${word.bulgarian} - ${word.english}`);
+                    return false;
+                }
+                seen.add(key);
+                return true;
+            });
+            
+            this.words = words;
             
             console.log(`Loaded ${this.words.length} words`);
             return this.words;
@@ -59,8 +73,8 @@ class WordManager {
         // Sort by priority (higher priority first)
         wordPriorities.sort((a, b) => b.priority - a.priority);
 
-        // Use weighted random selection from top 30% of prioritized words
-        const topWordsCount = Math.max(1, Math.floor(wordPriorities.length * 0.3));
+        // Use weighted random selection from top 50% of prioritized words (increased from 30%)
+        const topWordsCount = Math.max(1, Math.floor(wordPriorities.length * 0.5));
         const topWords = wordPriorities.slice(0, topWordsCount);
         
         // Weighted random selection
@@ -89,7 +103,7 @@ class WordManager {
 
         // Never shown words get highest priority
         if (word.stats.attempts === 0) {
-            priority += 50;
+            priority += 100; // Increased from 50 to ensure new words appear sooner
         } else {
             // Calculate error rate
             const errorRate = word.stats.attempts > 0 ? 
