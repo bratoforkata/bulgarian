@@ -1,16 +1,16 @@
-// WordManager - Handles word selection, prioritization, and tracking
+// WordManager - Handles word selection and session management
 class WordManager {
     constructor() {
         this.words = [];
-        this.shownWordsInSession = new Set();
-        this.skippedWordsInSession = new Set(); // Track skipped words
-        this.failedWordsInSession = new Set(); // Track failed words in current session
+        this.sessionWords = []; // Array of 65 randomly selected words for the session
+        this.currentWordIndex = 0; // Index in sessionWords
         this.sessionStats = {
             totalAttempts: 0,
             successes: 0,
             failures: 0,
             skipped: 0
         };
+        this.sessionActive = false;
     }
 
     // Load words from JSON file
@@ -42,198 +42,105 @@ class WordManager {
         }
     }
 
-    // Get next word using intelligent prioritization
-    getNextWord() {
-        if (this.words.length === 0) return null;
-
-        // Reset session if all words have been shown (including skipped ones)
-        if (this.shownWordsInSession.size >= this.words.length) {
-            this.shownWordsInSession.clear();
-            this.skippedWordsInSession.clear();
+    // Start a new session with 65 random words
+    startNewSession() {
+        if (this.words.length < 65) {
+            throw new Error('Not enough words available for a session');
         }
 
-        // Filter out recently shown words, but include previously skipped words if we're running low
-        let availableWords = this.words.filter(word => !this.shownWordsInSession.has(word.id));
-        
-        // If no available words, include skipped words from this session
-        if (availableWords.length === 0) {
-            availableWords = this.words.filter(word => this.skippedWordsInSession.has(word.id));
-            // Clear skipped tracking since we're revisiting them
-            this.skippedWordsInSession.clear();
-        }
-        
-        if (availableWords.length === 0) return null;
+        // Shuffle the words array and take first 65
+        const shuffled = [...this.words].sort(() => Math.random() - 0.5);
+        this.sessionWords = shuffled.slice(0, 65);
+        this.currentWordIndex = 0;
+        this.sessionActive = true;
 
-        // Calculate priorities for available words
-        const wordPriorities = availableWords.map(word => ({
-            word,
-            priority: this.calculateWordPriority(word)
-        }));
-
-        // Sort by priority (higher priority first)
-        wordPriorities.sort((a, b) => b.priority - a.priority);
-
-        // Use weighted random selection from top 50% of prioritized words (increased from 30%)
-        const topWordsCount = Math.max(1, Math.floor(wordPriorities.length * 0.5));
-        const topWords = wordPriorities.slice(0, topWordsCount);
-        
-        // Weighted random selection
-        const totalWeight = topWords.reduce((sum, item) => sum + item.priority, 0);
-        const randomValue = Math.random() * totalWeight;
-        
-        let cumulativeWeight = 0;
-        for (const item of topWords) {
-            cumulativeWeight += item.priority;
-            if (randomValue <= cumulativeWeight) {
-                const selectedWord = item.word;
-                this.shownWordsInSession.add(selectedWord.id);
-                return selectedWord;
-            }
-        }
-
-        // Fallback to first word
-        const fallbackWord = topWords[0].word;
-        this.shownWordsInSession.add(fallbackWord.id);
-        return fallbackWord;
-    }
-
-    // Calculate word priority based on various factors
-    calculateWordPriority(word) {
-        let priority = 10; // Base priority
-
-        // Never shown words get highest priority
-        if (word.stats.attempts === 0) {
-            priority += 100; // Increased from 50 to ensure new words appear sooner
-        } else {
-            // Calculate error rate
-            const errorRate = word.stats.attempts > 0 ? 
-                (word.stats.attempts - word.stats.successes) / word.stats.attempts : 0;
-            
-            // Higher error rate = higher priority
-            priority += errorRate * 30;
-            
-            // Lower success rate = higher priority
-            const successRate = word.stats.attempts > 0 ? 
-                word.stats.successes / word.stats.attempts : 0;
-            priority -= successRate * 20;
-            
-            // Words shown long ago get slight priority boost
-            if (word.stats.lastShown) {
-                const daysSinceShown = (Date.now() - new Date(word.stats.lastShown).getTime()) / (1000 * 60 * 60 * 24);
-                priority += Math.min(daysSinceShown * 2, 10);
-            }
-        }
-
-        return Math.max(1, priority); // Minimum priority of 1
-    }
-
-    // Record word attempt result
-    recordWordAttempt(wordId, success) {
-        const word = this.words.find(w => w.id === wordId);
-        if (!word) return;
-
-        word.stats.attempts++;
-        if (success) {
-            word.stats.successes++;
-            this.sessionStats.successes++;
-        } else {
-            this.sessionStats.failures++;
-            // Add to current session failed words
-            this.failedWordsInSession.add(wordId);
-        }
-        
-        word.stats.lastShown = new Date().toISOString();
-        word.stats.successRate = word.stats.attempts > 0 ? 
-            word.stats.successes / word.stats.attempts : 0;
-
-        this.sessionStats.totalAttempts++;
-
-        // Save to localStorage
-        this.saveStatsToStorage();
-    }
-
-    // Skip a word (doesn't affect stats)
-    skipWord(wordId) {
-        this.skippedWordsInSession.add(wordId);
-        this.sessionStats.skipped++;
-        // Remove from shown words so it can come back later
-        this.shownWordsInSession.delete(wordId);
-    }
-
-    // Get session statistics
-    getSessionStats() {
-        const accuracyPercentage = this.sessionStats.totalAttempts > 0 ? 
-            Math.round((this.sessionStats.successes / this.sessionStats.totalAttempts) * 100) : 0;
-
-        return {
-            ...this.sessionStats,
-            accuracy: accuracyPercentage,
-            totalWords: this.words.length,
-            wordsShownThisSession: this.shownWordsInSession.size
-        };
-    }
-
-    // Reset session stats
-    resetSessionStats() {
+        // Reset session stats
         this.sessionStats = {
             totalAttempts: 0,
             successes: 0,
             failures: 0,
             skipped: 0
         };
-        this.shownWordsInSession.clear();
-        this.skippedWordsInSession.clear();
-        this.failedWordsInSession.clear(); // Clear failed words for current session
+
+        console.log(`Started new session with ${this.sessionWords.length} words`);
     }
 
-    // Load stats from localStorage
-    loadStatsFromStorage() {
-        try {
-            const savedStats = localStorage.getItem('bulgarianWordsStats');
-            if (savedStats) {
-                const parsedStats = JSON.parse(savedStats);
-                
-                // Merge saved stats with current words
-                this.words.forEach(word => {
-                    const savedWord = parsedStats[word.id];
-                    if (savedWord) {
-                        word.stats = {
-                            ...word.stats,
-                            ...savedWord
-                        };
-                    }
-                });
-            }
-        } catch (error) {
-            console.error('Error loading stats from localStorage:', error);
+    // Get next word in the session
+    getNextWord() {
+        if (!this.sessionActive || this.currentWordIndex >= this.sessionWords.length) {
+            return null;
         }
+
+        const word = this.sessionWords[this.currentWordIndex];
+        this.currentWordIndex++;
+        return word;
     }
 
-    // Save stats to localStorage
-    saveStatsToStorage() {
-        try {
-            const statsToSave = {};
-            this.words.forEach(word => {
-                statsToSave[word.id] = word.stats;
-            });
-            
-            localStorage.setItem('bulgarianWordsStats', JSON.stringify(statsToSave));
-        } catch (error) {
-            console.error('Error saving stats to localStorage:', error);
+    // Check if session is complete
+    isSessionComplete() {
+        return this.sessionActive && this.currentWordIndex >= this.sessionWords.length;
+    }
+
+    // Record word attempt result
+    recordWordAttempt(wordId, success) {
+        if (success) {
+            this.sessionStats.successes++;
+        } else {
+            this.sessionStats.failures++;
         }
+        
+        this.sessionStats.totalAttempts++;
     }
 
-    // Get words that were failed in current session
-    getFailedWordsInSession() {
-        return this.words.filter(word => this.failedWordsInSession.has(word.id));
+    // Skip a word
+    skipWord(wordId) {
+        this.sessionStats.skipped++;
+        this.sessionStats.totalAttempts++;
     }
 
-    // Export all word data
-    exportData() {
+    // Get session statistics
+    getSessionStats() {
+        const attemptedWords = this.sessionStats.successes + this.sessionStats.failures;
+        const accuracyPercentage = attemptedWords > 0 ? 
+            Math.round((this.sessionStats.successes / attemptedWords) * 100) : 0;
+
         return {
-            words: this.words,
-            exportDate: new Date().toISOString(),
-            sessionStats: this.sessionStats
+            ...this.sessionStats,
+            accuracy: accuracyPercentage,
+            totalWordsInSession: this.sessionWords.length,
+            wordsCompleted: this.currentWordIndex
+        };
+    }
+
+    // Reset session
+    resetSession() {
+        this.sessionWords = [];
+        this.currentWordIndex = 0;
+        this.sessionActive = false;
+        this.sessionStats = {
+            totalAttempts: 0,
+            successes: 0,
+            failures: 0,
+            skipped: 0
+        };
+    }
+
+    // Get final results for completed session
+    getFinalResults() {
+        if (!this.isSessionComplete()) {
+            return null;
+        }
+
+        const attemptedWords = this.sessionStats.successes + this.sessionStats.failures;
+        const accuracy = attemptedWords > 0 ? 
+            Math.round((this.sessionStats.successes / attemptedWords) * 100) : 0;
+
+        return {
+            totalWords: this.sessionWords.length,
+            correct: this.sessionStats.successes,
+            incorrect: this.sessionStats.failures,
+            skipped: this.sessionStats.skipped,
+            accuracy: accuracy
         };
     }
 }

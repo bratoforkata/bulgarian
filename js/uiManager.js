@@ -68,8 +68,8 @@ class UIManager {
     startWordReveal(word, onReveal) {
         this.displayWord(word, false);
         
-        // Disable success/fail buttons but keep skip enabled
-        this.setActionButtonsEnabled(false);
+        // Enable both success and fail buttons immediately
+        this.setActionButtonsEnabled(true);
         
         // Enable skip button specifically
         const skipButton = document.getElementById('skip-btn');
@@ -80,7 +80,6 @@ class UIManager {
         // Start progress animation
         this.startProgressAnimation(() => {
             this.displayWord(word, true);
-            this.setActionButtonsEnabled(true);
             if (onReveal) onReveal();
         });
     }
@@ -204,29 +203,10 @@ class UIManager {
                     <span class="stat-value">${stats.failures}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Total:</span>
-                    <span class="stat-value">${stats.totalAttempts}</span>
+                    <span class="stat-label">Attempted:</span>
+                    <span class="stat-value">${stats.successes + stats.failures}</span>
                 </div>
             `;
-        }
-    }
-
-    // Update failed words list
-    updateFailedWordsList(failedWords) {
-        const failedWordsList = document.getElementById('failed-words-list');
-        if (failedWordsList) {
-            const failedText = failedWords.map(word => 
-                `${word.bulgarian} - ${word.english}`
-            ).join('\n');
-            failedWordsList.value = failedText;
-        }
-    }
-
-    // Clear failed words list
-    clearFailedWordsList() {
-        const failedWordsList = document.getElementById('failed-words-list');
-        if (failedWordsList) {
-            failedWordsList.value = '';
         }
     }
 
