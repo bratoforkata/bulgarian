@@ -48,10 +48,36 @@
           <button id="skip-btn" class="btn btn-ghost" disabled>⏭ Skip</button>
         </div>
       </div>
-      <div class="failed-words-section">
-        <h3>Words to Review</h3>
-        <textarea id="failed-words-list" readonly placeholder="Words that you failed will appear here..."></textarea>
-        <button id="copy-failed-btn" class="btn btn-secondary">Copy Words to Review</button>
+    </section>
+
+    <!-- Final Results Section -->
+    <section class="card final-results" id="final-results" style="display: none;">
+      <h2>Session Complete!</h2>
+      <div class="results-summary">
+        <div class="result-item">
+          <span class="result-label">Total Words:</span>
+          <span class="result-value" id="total-words">65</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Correct:</span>
+          <span class="result-value" id="correct-count">0</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Incorrect:</span>
+          <span class="result-value" id="incorrect-count">0</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Skipped:</span>
+          <span class="result-value" id="skipped-count">0</span>
+        </div>
+        <div class="result-item result-accuracy">
+          <span class="result-label">Accuracy:</span>
+          <span class="result-value" id="final-accuracy">0%</span>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button id="start-new-session" class="btn">Start New Session</button>
+        <button id="back-to-welcome" class="btn btn-secondary" onclick="location.href='index.html'">Back to Welcome</button>
       </div>
     </section>
   </main>
@@ -73,6 +99,9 @@
                 // Load words and initialize UI
                 await wordManager.loadWords();
                 uiManager.init();
+                
+                // Start a new session
+                wordManager.startNewSession();
                 
                 // Setup event listeners
                 setupEventListeners();
@@ -114,17 +143,23 @@
                 handleWordSkip();
             });
 
-            // Copy failed words button
-            document.getElementById('copy-failed-btn').addEventListener('click', copyFailedWords);
+            // Start new session button
+            document.getElementById('start-new-session').addEventListener('click', startNewSession);
         }
 
         // Show next word with intelligent selection
         function showNextWord() {
             if (isWaitingForReveal) return;
             
+            // Check if session is complete
+            if (wordManager.isSessionComplete()) {
+                showFinalResults();
+                return;
+            }
+            
             currentWord = wordManager.getNextWord();
             if (!currentWord) {
-                alert('No more words available!');
+                alert('No more words available! Start a new session.');
                 return;
             }
 
@@ -132,8 +167,6 @@
             const startBtn = document.getElementById('start-practice');
             if (startBtn && startBtn.style.display !== 'none') {
                 startBtn.style.display = 'none';
-                // Clear failed words list when starting new session
-                uiManager.clearFailedWordsList();
             }
 
             isWaitingForReveal = true;
@@ -151,7 +184,15 @@
 
         // Handle word result (success/fail)
         function handleWordResult(success) {
-            if (!currentWord || isWaitingForReveal) return;
+            if (!currentWord) return;
+            
+            // If clicked early (before reveal), stop the timer and reveal the word
+            if (isWaitingForReveal) {
+                uiManager.stopProgressAnimation();
+                uiManager.displayWord(currentWord, true); // Reveal the translation
+                isWaitingForReveal = false;
+                setLanguageToggleEnabled(true); // Re-enable language toggle
+            }
 
             // Record the attempt
             wordManager.recordWordAttempt(currentWord.id, success);
@@ -165,7 +206,6 @@
 
             // Update displays
             updateStatsDisplay();
-            updateFailedWordsList();
 
             // Auto-advance to next word
             uiManager.autoAdvanceAfterAction(() => {
@@ -205,12 +245,6 @@
             uiManager.updateStatsDisplay(stats);
         }
 
-        // Update failed words list
-        function updateFailedWordsList() {
-            const failedWords = wordManager.getFailedWordsInSession();
-            uiManager.updateFailedWordsList(failedWords);
-        }
-
         // Control language toggle button state
         function setLanguageToggleEnabled(enabled) {
             const toggleBtn = document.getElementById('language-toggle');
@@ -222,44 +256,72 @@
 
         // Reset session statistics
         function resetSession() {
-            if (confirm('Reset session statistics? This will not affect your long-term word progress.')) {
-                wordManager.resetSessionStats();
-                updateStatsDisplay();
-                uiManager.stopProgressAnimation();
-                
-                // Reset display
+            if (confirm('Reset current session? This will start a new session with 65 random words.')) {
+                startNewSession();
+            }
+        }
+
+        // Show final results
+        function showFinalResults() {
+            const results = wordManager.getFinalResults();
+            if (!results) return;
+
+            // Hide practice sections
+            document.querySelector('.practice-layout').style.display = 'none';
+            document.querySelector('.accuracy-section').style.display = 'none';
+
+            // Show final results
+            const finalResultsSection = document.getElementById('final-results');
+            finalResultsSection.style.display = 'block';
+
+            // Update results display
+            document.getElementById('total-words').textContent = results.totalWords;
+            document.getElementById('correct-count').textContent = results.correct;
+            document.getElementById('incorrect-count').textContent = results.incorrect;
+            document.getElementById('skipped-count').textContent = results.skipped;
+            document.getElementById('final-accuracy').textContent = results.accuracy + '%';
+
+            // Stop any ongoing animations
+            uiManager.stopProgressAnimation();
+            isWaitingForReveal = false;
+            setLanguageToggleEnabled(false);
+        }
+
+        // Start a new session
+        function startNewSession() {
+            try {
+                // Start new session
+                wordManager.startNewSession();
+
+                // Hide final results, show practice sections
+                document.getElementById('final-results').style.display = 'none';
+                document.querySelector('.practice-layout').style.display = 'block';
+                document.querySelector('.accuracy-section').style.display = 'block';
+
+                // Reset UI
                 document.getElementById('word-english').textContent = '—';
                 document.getElementById('word-bulgarian').textContent = '—';
                 currentWord = null;
                 isWaitingForReveal = false;
-                
-                // Disable all action buttons
-                uiManager.setActionButtonsEnabled(false);
-                document.getElementById('skip-btn').disabled = true; // Explicitly disable skip until practice starts
-                
-                // Re-enable language toggle
-                setLanguageToggleEnabled(true);
-                
-                // Show start button again
+
+                // Show start button
                 const startBtn = document.getElementById('start-practice');
                 if (startBtn) {
                     startBtn.style.display = 'inline-block';
                 }
-                
-                // Clear failed words list
-                uiManager.clearFailedWordsList();
-            }
-        }
 
-        // Copy failed words to clipboard
-        function copyFailedWords() {
-            const textarea = document.getElementById('failed-words-list');
-            if (textarea.value) {
-                textarea.select();
-                document.execCommand('copy');
-                alert('Words to review copied to clipboard!');
-            } else {
-                alert('No words to copy yet. Practice some words first!');
+                // Reset stats display
+                updateStatsDisplay();
+
+                // Re-enable language toggle
+                setLanguageToggleEnabled(true);
+
+                // Disable action buttons
+                uiManager.setActionButtonsEnabled(false);
+                document.getElementById('skip-btn').disabled = true;
+
+            } catch (error) {
+                alert('Error starting new session: ' + error.message);
             }
         }
 
