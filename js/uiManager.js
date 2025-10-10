@@ -6,6 +6,8 @@ class UIManager {
         this.progressBar = null;
         this.progressTimer = null;
         this.revealDelay = 5000; // 5 seconds
+        this.currentSentence = null;
+        this.onOptionSelected = null;
     }
 
     // Initialize UI components
@@ -48,6 +50,12 @@ class UIManager {
         
         this.currentWord = word;
         
+        // Show the word practice help text for word practice
+        const practiceHelp = document.querySelector('.practice-help');
+        if (practiceHelp) {
+            practiceHelp.style.display = 'block';
+        }
+        
         const primaryElement = document.getElementById('word-english');
         const secondaryElement = document.getElementById('word-bulgarian');
         
@@ -70,12 +78,6 @@ class UIManager {
         
         // Enable both success and fail buttons immediately
         this.setActionButtonsEnabled(true);
-        
-        // Enable skip button specifically
-        const skipButton = document.getElementById('skip-btn');
-        if (skipButton) {
-            skipButton.disabled = false;
-        }
         
         // Start progress animation
         this.startProgressAnimation(() => {
@@ -156,12 +158,18 @@ class UIManager {
     }
 
     // Update language toggle button text
-    updateLanguageToggleButton() {
+    updateLanguageToggleButton(mode = 'words') {
         const toggleButton = document.getElementById('language-toggle');
         if (toggleButton) {
-            const mode = this.isLanguageToggled ? 'English → Bulgarian' : 'Bulgarian → English';
-            toggleButton.textContent = `Mode: ${mode}`;
-            toggleButton.title = 'Click to switch between Bulgarian→English and English→Bulgarian';
+            if (mode === 'words' || mode === 'sentences') {
+                toggleButton.disabled = false;
+                const modeText = this.isLanguageToggled ? 'English → Bulgarian' : 'Bulgarian → English';
+                toggleButton.textContent = `Mode: ${modeText}`;
+            } else {
+                toggleButton.disabled = true;
+                toggleButton.textContent = 'Mode: Bulgarian → English';
+            }
+            toggleButton.title = 'Click to switch practice mode';
         }
     }
 
@@ -174,12 +182,6 @@ class UIManager {
                 button.disabled = !enabled;
             }
         });
-        
-        // Skip button is enabled when practice is active
-        const skipButton = document.getElementById('skip-btn');
-        if (skipButton) {
-            skipButton.disabled = !enabled;
-        }
     }
 
     // Update statistics display
@@ -220,9 +222,11 @@ class UIManager {
         this.showFeedback('✗ Try again next time', 'failure');
     }
 
-    // Show skip feedback
-    showSkipFeedback() {
-        this.showFeedback('⏭ Skipped - will see this word later', 'skip');
+    // Show sentence result feedback
+    showSentenceResult(success) {
+        const message = success ? '✓ Correct!' : '✗ Incorrect';
+        const type = success ? 'success' : 'failure';
+        this.showFeedback(message, type);
     }
 
     // Show feedback message
@@ -275,5 +279,113 @@ class UIManager {
         setTimeout(() => {
             if (onNextWord) onNextWord();
         }, 1500);
+    }
+
+    // Display sentence with multiple choice options
+    displaySentence(sentenceData) {
+        const primaryElement = document.getElementById('word-english');
+        const secondaryElement = document.getElementById('word-bulgarian');
+        const practiceActions = document.querySelector('.practice-actions');
+
+        // Clear previous content
+        primaryElement.innerHTML = '';
+        secondaryElement.innerHTML = '';
+        if (practiceActions) practiceActions.innerHTML = '';
+
+        // Hide the word practice help text for sentence practice
+        const practiceHelp = document.querySelector('.practice-help');
+        if (practiceHelp) {
+            practiceHelp.style.display = 'none';
+        }
+
+        const sentenceText = sentenceData.blankedSentence;
+        const translationText = sentenceData.englishTranslation;
+
+        // Display blanked sentence
+        primaryElement.textContent = sentenceText;
+
+        // Display translation
+        secondaryElement.textContent = translationText;
+
+        // Create option buttons in practice-actions
+        if (practiceActions) {
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'sentence-options';
+            const cyrillicLetters = ['А', 'Б', 'В'];
+            optionsContainer.innerHTML = sentenceData.options.map((option, index) =>
+                `<button class="option-btn" data-index="${index}">${cyrillicLetters[index]}. ${option}</button>`
+            ).join('');
+            practiceActions.appendChild(optionsContainer);
+        }
+
+        this.currentSentence = sentenceData;
+        this.updateProgressText();
+    }
+
+    // Start sentence reveal (for sentences, show options immediately)
+    startSentenceReveal(sentenceData, onReady) {
+        this.displaySentence(sentenceData);
+
+        // Enable action buttons (but hide them for multiple choice)
+        this.setActionButtonsEnabled(false);
+
+        // Enable skip button for sentences
+        const skipButton = document.getElementById('skip-btn');
+        if (skipButton) {
+            skipButton.disabled = false;
+        }
+
+        // Add click handlers to options
+        const optionBtns = document.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', () => this.handleOptionClick(btn, sentenceData.correctAnswer, sentenceData));
+        });
+
+        if (onReady) onReady();
+    }
+
+    // Handle option button click
+    handleOptionClick(button, correctIndex, sentenceData) {
+        const selectedIndex = parseInt(button.dataset.index);
+        const isCorrect = selectedIndex === correctIndex;
+
+        // Disable all buttons
+        const allBtns = document.querySelectorAll('.option-btn');
+        allBtns.forEach(btn => {
+            btn.disabled = true;
+            const btnIndex = parseInt(btn.dataset.index);
+            if (btnIndex === correctIndex) {
+                btn.classList.add('correct');
+            } else if (btnIndex === selectedIndex && !isCorrect) {
+                btn.classList.add('incorrect');
+            }
+        });
+
+        // Show completed sentence
+        const primaryElement = document.getElementById('word-english');
+        if (primaryElement && sentenceData.fullSentence) {
+            primaryElement.textContent = sentenceData.fullSentence;
+        }
+
+        // Trigger result after a delay
+        setTimeout(() => {
+            if (this.onOptionSelected) {
+                this.onOptionSelected(isCorrect);
+            }
+        }, 1500);
+    }
+
+    // Set callback for option selection
+    setOptionCallback(callback) {
+        this.onOptionSelected = callback;
+    }
+
+    // Clear sentence options
+    clearSentenceOptions() {
+        const optionBtns = document.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            btn.classList.remove('correct', 'incorrect');
+            btn.disabled = false;
+        });
     }
 }

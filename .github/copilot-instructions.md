@@ -5,7 +5,7 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - **index.html**: Welcome page with tab navigation
 - **practice.html**: Intelligent word practice with statistics tracking and language toggle
 - **dictionary.html**: Dictionary management with search and download functionality
-- **data.json**: Primary data source (Bulgarian-English word pairs with statistics)
+- **words.json**: Primary data source (Bulgarian-English word pairs with statistics)
 - **style.css**: Centralized styling with CSS variables
 - **js/wordManager.js**: Word selection algorithm and statistics management
 - **js/uiManager.js**: UI interactions, animations, and user preferences
@@ -21,10 +21,10 @@ This is a vanilla JavaScript web app with no build process. Core components:
 ## Key Patterns & Conventions
 
 ### Data Management
-- **Primary data source**: `data.json` contains structured word objects with statistics
+- **Primary data source**: `words.json` contains structured word objects with statistics
 - **Data structure**: `{id, bulgarian, english, stats: {attempts, successes, lastShown, successRate}}`
 - **Duplicate prevention**: Compare `word.bulgarian.toLowerCase() + '|' + word.english.toLowerCase()`
-- **Storage hierarchy**: localStorage (session) → data.json (persistent)
+- **Storage hierarchy**: localStorage (session) → words.json (persistent)
 - **Statistics tracking**: Separate session stats from long-term word statistics
 
 ### Intelligent Word Selection
@@ -56,7 +56,7 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - **Statistics tracking**: Session stats separate from long-term word statistics
 - **Language toggle**: Disabled during reveal animation to prevent confusion
 - **Skip functionality**: Skip words without penalty, available during reveal animation
-- **Loading data**: fetch data.json → parse → merge localStorage → remove duplicates → render
+- **Loading data**: fetch words.json → parse → merge localStorage → remove duplicates → render
 - **Tab navigation**: Initialize with `showTab('welcome')` on page load
 
 ### File Download
@@ -69,7 +69,7 @@ This is a vanilla JavaScript web app with no build process. Core components:
 - Use semantic class names (`.search-controls`, `.download-controls`, `.dictionary-controls`)
 - Handle Bulgarian UTF-8 characters properly in all string operations
 - Test all functionality with proper error handling
-- Maintain data consistency between localStorage and data.json
+- Maintain data consistency between localStorage and words.json
 - Follow modular JavaScript architecture with WordManager and UIManager classes
 - Update documentation immediately after any code changes</content>
 <parameter name="filePath">c:\Users\FF\source\bulgarian\.github\copilot-instructions.md

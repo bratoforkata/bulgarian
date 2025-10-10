@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sentence Practice — Bulgarian → English</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">Bulgarian → English trainer</div>
+    <nav class="tabs">
+      <button class="tab" onclick="location.href='index.html'">Welcome</button>
+      <button class="tab" onclick="location.href='practice.html'">Practice</button>
+      <button class="tab" onclick="location.href='dictionary.html'">Dictionary</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Practice Interface -->
+    <section id="practice-interface" class="card">
+      <div class="practice-header">
+        <button onclick="location.href='practice.html'" class="btn btn-ghost">← Back</button>
+        <h3 id="practice-title">Sentence Practice</h3>
+      </div>
+
+      <div class="practice-controls">
+        <button id="reset-session" class="btn btn-ghost">Reset Session</button>
+      </div>
+      
+      <div class="practice-layout">
+        <div>
+          <div class="word-big" id="word-english">—</div>
+          <div class="small-muted" id="word-bulgarian">—</div>
+        </div>
+        <div class="practice-actions">
+          <button id="start-practice" class="btn">Start Practice</button>
+        </div>
+      </div>
+      <div class="practice-help small-muted">Click Start Practice to begin. Select the correct Bulgarian translation from the options below.</div>
+      <div id="feedback-message" class="feedback-message"></div>
+    </section>
+
+    <section class="card accuracy-section">
+      <div class="accuracy-layout">
+        <div class="accuracy-meter">
+          <div class="accuracy-display">Accuracy: 0%</div>
+          <div class="stats-details"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Results Section -->
+    <section class="card final-results" id="final-results" style="display: none;">
+      <h2>Session Complete!</h2>
+      <div class="results-summary">
+        <div class="result-item">
+          <span class="result-label">Total Sentences:</span>
+          <span class="result-value" id="total-words">10</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Correct:</span>
+          <span class="result-value" id="correct-count">0</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Incorrect:</span>
+          <span class="result-value" id="incorrect-count">0</span>
+        </div>
+        <div class="result-item result-accuracy">
+          <span class="result-label">Accuracy:</span>
+          <span class="result-value" id="final-accuracy">0%</span>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button id="start-new-session" class="btn">Start New Session</button>
+        <button id="back-to-welcome" class="btn btn-secondary" onclick="location.href='index.html'">Back to Welcome</button>
+      </div>
+    </section>
+  </main>
+
+<script src="js/sentenceManager.js"></script>
+<script src="js/uiManager.js"></script>
+<script>
+        // Initialize managers
+        const sentenceManager = new SentenceManager();
+        const uiManager = new UIManager();
+        
+        // Current sentence being tested
+        let currentSentence = null;
+        let currentPracticeMode = 'sentences'; // fixed to 'sentences'
+
+        // Initialize the application
+        async function initApp() {
+            try {
+                console.log('Starting sentence practice app initialization...');
+                
+                // Load sentences and words, initialize UI
+                console.log('Loading sentenceManager...');
+                await sentenceManager.loadSentences();
+                console.log('Initializing UI...');
+                uiManager.init();
+                
+                // Set up option callback
+                uiManager.setOptionCallback((isCorrect) => {
+                    handleSentenceResult(isCorrect);
+                });
+                
+                // Update language button
+                uiManager.updateLanguageToggleButton('sentences');
+                
+                // Setup event listeners
+                console.log('Setting up event listeners...');
+                setupEventListeners();
+                
+                // Start session
+                console.log('Starting sentence session...');
+                sentenceManager.startNewSession();
+                resetToStart();
+                
+                console.log('Sentence practice app initialized successfully');
+            } catch (error) {
+                console.error('Error initializing sentence practice app:', error);
+                alert('Error loading sentence practice: ' + error.message);
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Start practice button
+            document.getElementById('start-practice').addEventListener('click', showNextSentence);
+
+            // Reset session button
+            document.getElementById('reset-session').addEventListener('click', resetSession);
+
+            // Start new session button
+            document.getElementById('start-new-session').addEventListener('click', startNewSession);
+        }
+
+        // Show next sentence
+        function showNextSentence() {
+            // Check if session is complete
+            if (sentenceManager.isSessionComplete()) {
+                showFinalResults();
+                return;
+            }
+
+            currentSentence = sentenceManager.getNextSentence();
+            if (!currentSentence) {
+                alert('No more sentences available! Start a new session.');
+                return;
+            }
+
+            // Hide start button after first sentence
+            const startBtn = document.getElementById('start-practice');
+            if (startBtn && startBtn.style.display !== 'none') {
+                startBtn.style.display = 'none';
+            }
+
+            // Start sentence reveal (no countdown)
+            uiManager.startSentenceReveal(currentSentence, () => {
+                // Ready for input
+            });
+
+            // Update stats display
+            updateStatsDisplay();
+        }
+
+        // Handle sentence result
+        function handleSentenceResult(success) {
+            if (!currentSentence) return;
+
+            // Record the attempt
+            sentenceManager.recordSentenceAttempt(currentSentence.id, success);
+
+            // Show feedback
+            uiManager.showSentenceResult(success);
+
+            // Clear options
+            uiManager.clearSentenceOptions();
+
+            // Update displays
+            updateStatsDisplay();
+
+            // Auto-advance to next sentence
+            uiManager.autoAdvanceAfterAction(() => {
+                showNextSentence();
+            });
+        }
+
+        // Reset to start state
+        function resetToStart() {
+            // Hide final results, show practice sections
+            document.getElementById('final-results').style.display = 'none';
+            document.querySelector('.practice-layout').style.display = 'block';
+            document.querySelector('.accuracy-section').style.display = 'block';
+
+            // Reset UI
+            document.getElementById('word-english').textContent = '—';
+            document.getElementById('word-bulgarian').textContent = '—';
+            currentSentence = null;
+
+            // Show start button
+            const startBtn = document.getElementById('start-practice');
+            if (startBtn) {
+                startBtn.style.display = 'inline-block';
+            }
+
+            // Reset stats display
+            updateStatsDisplay();
+
+        }
+
+        // Update statistics display
+        function updateStatsDisplay() {
+            const stats = sentenceManager.getSessionStats();
+            uiManager.updateStatsDisplay(stats);
+        }
+
+        // Reset session statistics
+        function resetSession() {
+            if (confirm('Reset current session? This will start a new session with a new sentence.')) {
+                // Start new session
+                sentenceManager.startNewSession();
+
+                // Hide final results, show practice sections
+                document.getElementById('final-results').style.display = 'none';
+                document.querySelector('.practice-layout').style.display = 'block';
+                document.querySelector('.accuracy-section').style.display = 'block';
+
+                // Reset UI
+                document.getElementById('word-english').textContent = '—';
+                document.getElementById('word-bulgarian').textContent = '—';
+                currentSentence = null;
+
+                // Reset stats display
+                updateStatsDisplay();
+
+                // Immediately start with first sentence
+                showNextSentence();
+            }
+        }
+
+        // Show final results
+        function showFinalResults() {
+            const results = sentenceManager.getFinalResults();
+            if (!results) return;
+
+            // Hide practice sections
+            document.querySelector('.practice-layout').style.display = 'none';
+            document.querySelector('.accuracy-section').style.display = 'none';
+
+            // Show final results
+            const finalResultsSection = document.getElementById('final-results');
+            finalResultsSection.style.display = 'block';
+
+            // Update results display
+            document.getElementById('total-words').textContent = results.totalSentences;
+            document.getElementById('correct-count').textContent = results.correct;
+            document.getElementById('incorrect-count').textContent = results.incorrect;
+            document.getElementById('final-accuracy').textContent = results.accuracy + '%';
+        }
+
+        // Start a new session
+        function startNewSession() {
+            try {
+                // Start new session
+                sentenceManager.startNewSession();
+
+                // Hide final results, show practice sections
+                document.getElementById('final-results').style.display = 'none';
+                document.querySelector('.practice-layout').style.display = 'block';
+                document.querySelector('.accuracy-section').style.display = 'block';
+
+                // Reset UI
+                document.getElementById('word-english').textContent = '—';
+                document.getElementById('word-bulgarian').textContent = '—';
+                currentSentence = null;
+
+                // Show start button
+                const startBtn = document.getElementById('start-practice');
+                if (startBtn) {
+                    startBtn.style.display = 'inline-block';
+                }
+
+                // Reset stats display
+                updateStatsDisplay();
+
+            } catch (error) {
+                alert('Error starting new session: ' + error.message);
+            }
+        }
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>

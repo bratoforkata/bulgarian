@@ -411,6 +411,29 @@ body{
     }
 }
 
+/* Tablet and medium mobile screens */
+@media (max-width: 720px) and (min-width: 481px) {
+    .btn-large {
+        padding: 18px 28px;
+        font-size: 17px;
+    }
+    
+    .results-summary {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    
+    .option-btn {
+        font-size: 17px;
+        padding: 15px 18px;
+        min-height: 55px;
+    }
+    
+    .landing-buttons {
+        gap: 14px;
+    }
+}
+
 /* Extra small screens */
 @media (max-width: 480px) {
     .container {
@@ -433,6 +456,50 @@ body{
     .btn {
         padding: 14px 18px;
         font-size: 16px;
+    }
+    
+    .btn-large {
+        padding: 16px 24px;
+        font-size: 16px;
+    }
+    
+    .results-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .result-item {
+        padding: 12px;
+        text-align: center;
+    }
+    
+    .result-value {
+        font-size: 20px;
+    }
+    
+    .option-btn {
+        font-size: 16px;
+        padding: 14px 16px;
+        min-height: 50px;
+    }
+    
+    .landing-buttons {
+        gap: 12px;
+    }
+    
+    .feature-list {
+        padding-left: 16px;
+        margin: 12px 0;
+    }
+    
+    .practice-header {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    
+    .final-results h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
     }
 }
 
@@ -529,12 +596,6 @@ body{
     color: #fca5a5;
 }
 
-.feedback-message.skip {
-    background: rgba(107, 114, 128, 0.1);
-    border: 1px solid rgba(107, 114, 128, 0.3);
-    color: var(--muted);
-}
-
 /* Enhanced button styles */
 .success-btn {
     background: var(--accent-2) !important;
@@ -629,5 +690,92 @@ body{
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Practice landing page */
+#practice-landing {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#practice-landing h2 {
+    margin-bottom: 8px;
+}
+
+.landing-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.landing-buttons a {
+    text-decoration: none;
+}
+
+.btn-large {
+    padding: 20px 32px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.practice-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+#practice-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Sentence practice options */
+.sentence-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #e6eef8;
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.2s ease;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.option-btn:hover {
+    background: rgba(79, 131, 255, 0.1);
+    border-color: rgba(79, 131, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.option-btn.correct {
+    background: rgba(52, 211, 153, 0.2);
+    border-color: var(--accent-2);
+    color: var(--accent-2);
+}
+
+.option-btn.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 

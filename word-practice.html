@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Word Practice — Bulgarian → English</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">Bulgarian → English trainer</div>
+    <nav class="tabs">
+      <button class="tab" onclick="location.href='index.html'">Welcome</button>
+      <button class="tab" onclick="location.href='practice.html'">Practice</button>
+      <button class="tab" onclick="location.href='dictionary.html'">Dictionary</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Practice Interface -->
+    <section id="practice-interface" class="card">
+      <div class="practice-header">
+        <button onclick="location.href='practice.html'" class="btn btn-ghost">← Back</button>
+        <h3 id="practice-title">Word Practice</h3>
+      </div>
+
+      <div class="practice-controls">
+        <button id="language-toggle" class="btn btn-secondary">Mode: Bulgarian → English</button>
+        <button id="reset-session" class="btn btn-ghost">Reset Session</button>
+      </div>
+      
+      <div class="practice-layout">
+        <div>
+          <div class="word-big" id="word-english">—</div>
+          <div class="small-muted" id="word-bulgarian">—</div>
+        </div>
+        <div class="practice-actions">
+          <button id="start-practice" class="btn">Start Practice</button>
+        </div>
+      </div>
+      <div class="practice-help small-muted">Translations will appear after 5 seconds, then use Success/Fail buttons. Words advance automatically.</div>
+      <div id="feedback-message" class="feedback-message"></div>
+    </section>
+
+    <section class="card accuracy-section">
+      <div class="accuracy-layout">
+        <div class="accuracy-meter">
+          <div class="accuracy-display">Accuracy: 0%</div>
+          <div class="stats-details"></div>
+        </div>
+        <div class="feedback-buttons">
+          <button id="success-btn" class="btn success-btn" disabled>✓ Success</button>
+          <button id="fail-btn" class="btn fail-btn" disabled>✗ Fail</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Results Section -->
+    <section class="card final-results" id="final-results" style="display: none;">
+      <h2>Session Complete!</h2>
+      <div class="results-summary">
+        <div class="result-item">
+          <span class="result-label">Total Words:</span>
+          <span class="result-value" id="total-words">65</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Correct:</span>
+          <span class="result-value" id="correct-count">0</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Incorrect:</span>
+          <span class="result-value" id="incorrect-count">0</span>
+        </div>
+        <div class="result-item result-accuracy">
+          <span class="result-label">Accuracy:</span>
+          <span class="result-value" id="final-accuracy">0%</span>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button id="start-new-session" class="btn">Start New Session</button>
+        <button id="back-to-welcome" class="btn btn-secondary" onclick="location.href='index.html'">Back to Welcome</button>
+      </div>
+    </section>
+  </main>
+
+<script src="js/wordManager.js"></script>
+<script src="js/uiManager.js"></script>
+<script>
+        // Initialize managers
+        const wordManager = new WordManager();
+        const uiManager = new UIManager();
+        
+        // Current word being tested
+        let currentWord = null;
+        let isWaitingForReveal = false;
+        let currentPracticeMode = 'words'; // fixed to 'words'
+
+        // Initialize the application
+        async function initApp() {
+            try {
+                console.log('Starting word practice app initialization...');
+                
+                // Load words, initialize UI
+                console.log('Loading wordManager...');
+                await wordManager.loadWords();
+                console.log('Initializing UI...');
+                uiManager.init();
+                
+                // Setup event listeners
+                console.log('Setting up event listeners...');
+                setupEventListeners();
+                
+                // Start session
+                console.log('Starting word session...');
+                wordManager.startNewSession();
+                resetToStart();
+                
+                console.log('Word practice app initialized successfully');
+            } catch (error) {
+                console.error('Error initializing word practice app:', error);
+                alert('Error loading word practice: ' + error.message);
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Start practice button
+            document.getElementById('start-practice').addEventListener('click', showNextWord);
+
+            // Language toggle button
+            document.getElementById('language-toggle').addEventListener('click', () => {
+                if (isWaitingForReveal) return; // Prevent toggle during reveal animation
+                uiManager.toggleLanguageMode();
+            });
+
+            // Reset session button
+            document.getElementById('reset-session').addEventListener('click', resetSession);
+
+            // Success button
+            document.getElementById('success-btn').addEventListener('click', () => {
+                handleWordResult(true);
+            });
+
+            // Fail button
+            document.getElementById('fail-btn').addEventListener('click', () => {
+                handleWordResult(false);
+            });
+
+            // Start new session button
+            document.getElementById('start-new-session').addEventListener('click', startNewSession);
+        }
+
+        // Show next word with intelligent selection
+        function showNextWord() {
+            if (isWaitingForReveal) return;
+            
+            // Check if session is complete
+            if (wordManager.isSessionComplete()) {
+                showFinalResults();
+                return;
+            }
+            
+            currentWord = wordManager.getNextWord();
+            if (!currentWord) {
+                alert('No more words available! Start a new session.');
+                return;
+            }
+
+            // Hide start button after first word
+            const startBtn = document.getElementById('start-practice');
+            if (startBtn && startBtn.style.display !== 'none') {
+                startBtn.style.display = 'none';
+            }
+
+            isWaitingForReveal = true;
+            setLanguageToggleEnabled(false); // Disable language toggle during animation
+            
+            // Start word reveal process
+            uiManager.startWordReveal(currentWord, () => {
+                isWaitingForReveal = false;
+                setLanguageToggleEnabled(true); // Re-enable language toggle
+            });
+
+            // Update stats display
+            updateStatsDisplay();
+        }
+
+        // Handle word result (success/fail)
+        function handleWordResult(success) {
+            if (!currentWord) return;
+            
+            // If clicked early (before reveal), stop the timer and reveal the word
+            if (isWaitingForReveal) {
+                uiManager.stopProgressAnimation();
+                uiManager.displayWord(currentWord, true); // Reveal the translation
+                isWaitingForReveal = false;
+                setLanguageToggleEnabled(true); // Re-enable language toggle
+            }
+
+            // Record the attempt
+            wordManager.recordWordAttempt(currentWord.id, success);
+
+            // Show feedback
+            if (success) {
+                uiManager.showSuccessFeedback();
+            } else {
+                uiManager.showFailureFeedback();
+            }
+
+            // Update displays
+            updateStatsDisplay();
+
+            // Auto-advance to next word
+            uiManager.autoAdvanceAfterAction(() => {
+                showNextWord();
+            });
+        }
+
+        // Reset to start state
+        function resetToStart() {
+            // Hide final results, show practice sections
+            document.getElementById('final-results').style.display = 'none';
+            document.querySelector('.practice-layout').style.display = 'block';
+            document.querySelector('.accuracy-section').style.display = 'block';
+
+            // Reset UI
+            document.getElementById('word-english').textContent = '—';
+            document.getElementById('word-bulgarian').textContent = '—';
+            currentWord = null;
+            isWaitingForReveal = false;
+
+            // Show start button
+            const startBtn = document.getElementById('start-practice');
+            if (startBtn) {
+                startBtn.style.display = 'inline-block';
+            }
+
+            // Reset stats display
+            updateStatsDisplay();
+
+            // Re-enable language toggle
+            setLanguageToggleEnabled(true);
+
+            // Disable action buttons
+            uiManager.setActionButtonsEnabled(false);
+        }
+
+        // Update statistics display
+        function updateStatsDisplay() {
+            const stats = wordManager.getSessionStats();
+            uiManager.updateStatsDisplay(stats);
+        }
+
+        // Control language toggle button state
+        function setLanguageToggleEnabled(enabled) {
+            const toggleBtn = document.getElementById('language-toggle');
+            if (toggleBtn) {
+                toggleBtn.disabled = !enabled;
+                toggleBtn.style.opacity = enabled ? '1' : '0.6';
+            }
+        }
+
+        // Reset session statistics
+        function resetSession() {
+            if (confirm('Reset current session? This will start a new session with 65 random words.')) {
+                startNewSession();
+            }
+        }
+
+        // Show final results
+        function showFinalResults() {
+            const results = wordManager.getFinalResults();
+            if (!results) return;
+
+            // Hide practice sections
+            document.querySelector('.practice-layout').style.display = 'none';
+            document.querySelector('.accuracy-section').style.display = 'none';
+
+            // Show final results
+            const finalResultsSection = document.getElementById('final-results');
+            finalResultsSection.style.display = 'block';
+
+            // Update results display
+            document.getElementById('total-words').textContent = results.totalWords;
+            document.getElementById('correct-count').textContent = results.correct;
+            document.getElementById('incorrect-count').textContent = results.incorrect;
+            document.getElementById('final-accuracy').textContent = results.accuracy + '%';
+
+            // Stop any ongoing animations
+            uiManager.stopProgressAnimation();
+            isWaitingForReveal = false;
+            setLanguageToggleEnabled(false);
+        }
+
+        // Start a new session
+        function startNewSession() {
+            try {
+                // Start new session
+                wordManager.startNewSession();
+
+                // Hide final results, show practice sections
+                document.getElementById('final-results').style.display = 'none';
+                document.querySelector('.practice-layout').style.display = 'block';
+                document.querySelector('.accuracy-section').style.display = 'block';
+
+                // Reset UI
+                document.getElementById('word-english').textContent = '—';
+                document.getElementById('word-bulgarian').textContent = '—';
+                currentWord = null;
+                isWaitingForReveal = false;
+
+                // Show start button
+                const startBtn = document.getElementById('start-practice');
+                if (startBtn) {
+                    startBtn.style.display = 'inline-block';
+                }
+
+                // Reset stats display
+                updateStatsDisplay();
+
+                // Re-enable language toggle
+                setLanguageToggleEnabled(true);
+
+                // Disable action buttons
+                uiManager.setActionButtonsEnabled(false);
+
+            } catch (error) {
+                alert('Error starting new session: ' + error.message);
+            }
+        }
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
