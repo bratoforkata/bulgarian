@@ -7,19 +7,21 @@ class WordManager {
         this.sessionStats = {
             totalAttempts: 0,
             successes: 0,
-            failures: 0,
-            skipped: 0
+            failures: 0
         };
         this.sessionActive = false;
     }
 
-    // Load words from JSON file
+    // Load words from words.json
     async loadWords() {
         try {
-            const response = await fetch('data.json');
+            const response = await fetch('data/words.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
             let words = data.words;
-            
+
             // Remove duplicates based on bulgarian|english combination
             const seen = new Set();
             words = words.filter(word => {
@@ -31,9 +33,9 @@ class WordManager {
                 seen.add(key);
                 return true;
             });
-            
+
             this.words = words;
-            
+
             console.log(`Loaded ${this.words.length} words`);
             return this.words;
         } catch (error) {
@@ -58,8 +60,7 @@ class WordManager {
         this.sessionStats = {
             totalAttempts: 0,
             successes: 0,
-            failures: 0,
-            skipped: 0
+            failures: 0
         };
 
         console.log(`Started new session with ${this.sessionWords.length} words`);
@@ -92,12 +93,6 @@ class WordManager {
         this.sessionStats.totalAttempts++;
     }
 
-    // Skip a word
-    skipWord(wordId) {
-        this.sessionStats.skipped++;
-        this.sessionStats.totalAttempts++;
-    }
-
     // Get session statistics
     getSessionStats() {
         const attemptedWords = this.sessionStats.successes + this.sessionStats.failures;
@@ -120,8 +115,7 @@ class WordManager {
         this.sessionStats = {
             totalAttempts: 0,
             successes: 0,
-            failures: 0,
-            skipped: 0
+            failures: 0
         };
     }
 
@@ -139,7 +133,6 @@ class WordManager {
             totalWords: this.sessionWords.length,
             correct: this.sessionStats.successes,
             incorrect: this.sessionStats.failures,
-            skipped: this.sessionStats.skipped,
             accuracy: accuracy
         };
     }

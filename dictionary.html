@@ -18,9 +18,15 @@
 
     <main class="container">
         <div class="card">
+            <!-- Type selection buttons -->
+            <div class="controls">
+                <button id="words-btn" class="btn active">Words</button>
+                <button id="sentences-btn" class="btn">Sentences</button>
+            </div>
+
             <!-- Controls section - search and download on same line -->
             <div class="controls dictionary-controls">
-                <input id="filter" class="input" placeholder="Search words...">
+                <input id="filter" class="input" placeholder="Search...">
                 <button id="download-btn" class="btn btn-secondary">Download Study File</button>
             </div>
 
@@ -41,15 +47,17 @@
 
 <script>
 let words = []; // {id, bulgarian, english, stats}
+let sentences = []; // {id, bulgarian, english}
+let currentMode = 'words'; // 'words' or 'sentences'
 
-// Load data from data.json
+// Load data from words.json and sentences.json
 async function loadData() {
     try {
-        const response = await fetch('data.json');
-        if (!response.ok) throw new Error('Could not load data.json');
-        
-        const data = await response.json();
-        words = data.words || [];
+        // Load words
+        const wordsResponse = await fetch('data/words.json');
+        if (!wordsResponse.ok) throw new Error('Could not load words.json');
+        const wordsData = await wordsResponse.json();
+        words = wordsData.words || [];
         
         // Load additional words from localStorage (for backwards compatibility)
         const storedWords = localStorage.getItem('bulgarian-words');
@@ -80,18 +88,30 @@ async function loadData() {
                 return true;
             });
         }
+
+        // Load sentences from sentence-practise.json
+        const sentencesResponse = await fetch('data/sentence-practise.json');
+        if (!sentencesResponse.ok) throw new Error('Could not load sentence-practise.json');
+        const practiceSentences = await sentencesResponse.json();
+        
+        // Convert practice sentence format to dictionary format
+        sentences = practiceSentences.map(sentence => ({
+            id: sentence.id,
+            bulgarian: sentence.question_bg.replace('____', sentence.answer),
+            english: sentence.translation_en
+        }));
         
         renderDictionary();
     } catch (err) {
         console.error('Loading failed:', err);
         
-        // Fallback: load only from localStorage
+        // Fallback: load only from localStorage for words
         const storedWords = localStorage.getItem('bulgarian-words');
         if (storedWords) {
             words = JSON.parse(storedWords);
             renderDictionary();
         } else {
-            alert('Failed to load dictionary data. Please make sure data.json is available or add some words first.');
+            alert('Failed to load dictionary data. Please make sure words.json and sentence-practise.json are available.');
         }
     }
 }
@@ -99,21 +119,21 @@ async function loadData() {
 // Render the dictionary table
 function renderDictionary(filterText = '') {
     const dictList = document.getElementById('dict-list');
-    let displayWords = words;
+    let displayItems = currentMode === 'words' ? words : sentences;
 
     if (filterText) {
         const searchText = filterText.toLowerCase();
-        displayWords = words.filter(word => 
-            word.bulgarian.toLowerCase().includes(searchText) ||
-            word.english.toLowerCase().includes(searchText)
+        displayItems = displayItems.filter(item => 
+            item.bulgarian.toLowerCase().includes(searchText) ||
+            item.english.toLowerCase().includes(searchText)
         );
     }
     
-    dictList.innerHTML = displayWords
-        .map(word => `
+    dictList.innerHTML = displayItems
+        .map(item => `
             <tr>
-                <td>${word.bulgarian}</td>
-                <td>${word.english}</td>
+                <td>${item.bulgarian}</td>
+                <td>${item.english}</td>
             </tr>
         `)
         .join('');
@@ -121,13 +141,14 @@ function renderDictionary(filterText = '') {
 
 // Download study file
 function downloadStudyFile() {
-    if (words.length === 0) {
-        alert('No words available to download');
+    const items = currentMode === 'words' ? words : sentences;
+    if (items.length === 0) {
+        alert(`No ${currentMode} available to download`);
         return;
     }
 
     // Create the content for the study file
-    const content = words.map(word => `${word.bulgarian} - ${word.english}`).join('\n');
+    const content = items.map(item => `${item.bulgarian} - ${item.english}`).join('\n');
 
     // Create a blob with the content
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
@@ -135,7 +156,7 @@ function downloadStudyFile() {
     // Create a download link
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'bulgarian-study-words.txt';
+    link.download = `bulgarian-study-${currentMode}.txt`;
 
     // Trigger the download
     document.body.appendChild(link);
@@ -153,6 +174,22 @@ document.getElementById('filter').addEventListener('input', (e) => {
 
 document.getElementById('download-btn').addEventListener('click', () => {
     downloadStudyFile();
+});
+
+document.getElementById('words-btn').addEventListener('click', () => {
+    currentMode = 'words';
+    document.getElementById('words-btn').classList.add('active');
+    document.getElementById('sentences-btn').classList.remove('active');
+    document.getElementById('filter').placeholder = 'Search words...';
+    renderDictionary();
+});
+
+document.getElementById('sentences-btn').addEventListener('click', () => {
+    currentMode = 'sentences';
+    document.getElementById('sentences-btn').classList.add('active');
+    document.getElementById('words-btn').classList.remove('active');
+    document.getElementById('filter').placeholder = 'Search sentences...';
+    renderDictionary();
 });
 
 // Initialize

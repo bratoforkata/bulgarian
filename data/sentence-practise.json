@@ -1,0 +1,2224 @@
+[
+  {
+    "id": 1,
+    "question_bg": "Добро ____!",
+    "options": [
+      "утро",
+      "кола",
+      "разходка"
+    ],
+    "answer": "утро",
+    "translation_en": "Good morning!"
+  },
+  {
+    "id": 2,
+    "question_bg": "____ си днес?",
+    "options": [
+      "Как",
+      "въпрос",
+      "утро"
+    ],
+    "answer": "Как",
+    "translation_en": "How are you today?"
+  },
+  {
+    "id": 3,
+    "question_bg": "Благодаря, добре ____.",
+    "options": [
+      "съм",
+      "филм",
+      "фитнес"
+    ],
+    "answer": "съм",
+    "translation_en": "Thank you, I’m fine."
+  },
+  {
+    "id": 4,
+    "question_bg": "____ ново има?",
+    "options": [
+      "Какво",
+      "език",
+      "вечер"
+    ],
+    "answer": "Какво",
+    "translation_en": "What’s new?"
+  },
+  {
+    "id": 5,
+    "question_bg": "Радвам ____ да те видя.",
+    "options": [
+      "се",
+      "вечер",
+      "кола"
+    ],
+    "answer": "се",
+    "translation_en": "I’m glad to see you."
+  },
+  {
+    "id": 6,
+    "question_bg": "____ мина денят ти?",
+    "options": [
+      "Как",
+      "въпрос",
+      "офис"
+    ],
+    "answer": "Как",
+    "translation_en": "How was your day?"
+  },
+  {
+    "id": 7,
+    "question_bg": "Имаш ли планове за ____?",
+    "options": [
+      "вечерта",
+      "музика",
+      "въпрос"
+    ],
+    "answer": "вечерта",
+    "translation_en": "Do you have plans for the evening?"
+  },
+  {
+    "id": 8,
+    "question_bg": "____ отидем на кафе.",
+    "options": [
+      "Да",
+      "офис",
+      "фитнес"
+    ],
+    "answer": "Да",
+    "translation_en": "Let’s go for a coffee."
+  },
+  {
+    "id": 9,
+    "question_bg": "____ от вкъщи.",
+    "options": [
+      "Работя",
+      "кафе",
+      "кухня"
+    ],
+    "answer": "Работя",
+    "translation_en": "I work from home."
+  },
+  {
+    "id": 10,
+    "question_bg": "Имам ____ работа днес.",
+    "options": [
+      "много",
+      "кафе",
+      "интернет"
+    ],
+    "answer": "много",
+    "translation_en": "I have a lot of work today."
+  },
+  {
+    "id": 11,
+    "question_bg": "Ще имаме ____ в 10 часа.",
+    "options": [
+      "среща",
+      "офис",
+      "кухня"
+    ],
+    "answer": "среща",
+    "translation_en": "We’ll have a meeting at 10 o’clock."
+  },
+  {
+    "id": 12,
+    "question_bg": "Може ____ да обсъдим това по-късно?",
+    "options": [
+      "ли",
+      "файл",
+      "имейл"
+    ],
+    "answer": "ли",
+    "translation_en": "Can we discuss this later?"
+  },
+  {
+    "id": 13,
+    "question_bg": "____ имейла вчера.",
+    "options": [
+      "Изпратих",
+      "помощ",
+      "информация"
+    ],
+    "answer": "Изпратих",
+    "translation_en": "I sent the email yesterday."
+  },
+  {
+    "id": 14,
+    "question_bg": "____ потвърди получаването.",
+    "options": [
+      "Моля,",
+      "утро",
+      "кафе"
+    ],
+    "answer": "Моля,",
+    "translation_en": "Please confirm receipt."
+  },
+  {
+    "id": 15,
+    "question_bg": "Ще ____ доклада утре.",
+    "options": [
+      "подготвя",
+      "информация",
+      "проект"
+    ],
+    "answer": "подготвя",
+    "translation_en": "I’ll prepare the report tomorrow."
+  },
+  {
+    "id": 16,
+    "question_bg": "Работим по ____ проект.",
+    "options": [
+      "нов",
+      "кухня",
+      "въпрос"
+    ],
+    "answer": "нов",
+    "translation_en": "We’re working on a new project."
+  },
+  {
+    "id": 17,
+    "question_bg": "Може ____ с това?",
+    "options": [
+      "помощ",
+      "вечер",
+      "кухня"
+    ],
+    "answer": "помощ",
+    "translation_en": "Can I get help with this?"
+  },
+  {
+    "id": 18,
+    "question_bg": "Имам нужда от ____ информация.",
+    "options": [
+      "повече",
+      "фитнес",
+      "кафе"
+    ],
+    "answer": "повече",
+    "translation_en": "I need more information."
+  },
+  {
+    "id": 19,
+    "question_bg": "Това е добра ____.",
+    "options": [
+      "идея",
+      "час",
+      "информация"
+    ],
+    "answer": "идея",
+    "translation_en": "That’s a good idea."
+  },
+  {
+    "id": 20,
+    "question_bg": "Благодаря за ____.",
+    "options": [
+      "съдействието",
+      "разходка",
+      "информация"
+    ],
+    "answer": "съдействието",
+    "translation_en": "Thank you for your cooperation."
+  },
+  {
+    "id": 21,
+    "question_bg": "____ се свържа с теб по-късно.",
+    "options": [
+      "Ще",
+      "въпрос",
+      "колега"
+    ],
+    "answer": "Ще",
+    "translation_en": "I’ll contact you later."
+  },
+  {
+    "id": 22,
+    "question_bg": "Извинявай ____ ____къснението.",
+    "options": [
+      "за",
+      "ден",
+      "интернет"
+    ],
+    "answer": "за",
+    "translation_en": "Sorry for the delay."
+  },
+  {
+    "id": 23,
+    "question_bg": "____ проблем.",
+    "options": [
+      "Няма",
+      "имейл",
+      "помощ"
+    ],
+    "answer": "Няма",
+    "translation_en": "No problem."
+  },
+  {
+    "id": 24,
+    "question_bg": "Ще се видим ____.",
+    "options": [
+      "утре",
+      "вечер",
+      "въпрос"
+    ],
+    "answer": "утре",
+    "translation_en": "See you tomorrow."
+  },
+  {
+    "id": 25,
+    "question_bg": "____ ден!",
+    "options": [
+      "Приятен",
+      "вечер",
+      "разходка"
+    ],
+    "answer": "Приятен",
+    "translation_en": "Have a nice day!"
+  },
+  {
+    "id": 26,
+    "question_bg": "Колко е ____?",
+    "options": [
+      "часът",
+      "разходка",
+      "език"
+    ],
+    "answer": "часът",
+    "translation_en": "What time is it?"
+  },
+  {
+    "id": 27,
+    "question_bg": "Обядът ____ в дванайс____т.",
+    "options": [
+      "е",
+      "фитнес",
+      "час"
+    ],
+    "answer": "е",
+    "translation_en": "Lunch is at twelve."
+  },
+  {
+    "id": 28,
+    "question_bg": "Ще закъснея ____.",
+    "options": [
+      "малко",
+      "време",
+      "час"
+    ],
+    "answer": "малко",
+    "translation_en": "I’ll be a little late."
+  },
+  {
+    "id": 29,
+    "question_bg": "Къде е ____?",
+    "options": [
+      "срещата",
+      "утро",
+      "разходка"
+    ],
+    "answer": "срещата",
+    "translation_en": "Where is the meeting?"
+  },
+  {
+    "id": 30,
+    "question_bg": "____ третия етаж.",
+    "options": [
+      "На",
+      "утро",
+      "ден"
+    ],
+    "answer": "На",
+    "translation_en": "On the third floor."
+  },
+  {
+    "id": 31,
+    "question_bg": "Това е моят ____.",
+    "options": [
+      "колега",
+      "фитнес",
+      "ден"
+    ],
+    "answer": "колега",
+    "translation_en": "This is my colleague."
+  },
+  {
+    "id": 32,
+    "question_bg": "Работим ____.",
+    "options": [
+      "заедно",
+      "филм",
+      "информация"
+    ],
+    "answer": "заедно",
+    "translation_en": "We work together."
+  },
+  {
+    "id": 33,
+    "question_bg": "____ е нова в екипа.",
+    "options": [
+      "Тя",
+      "работа",
+      "фитнес"
+    ],
+    "answer": "Тя",
+    "translation_en": "She’s new to the team."
+  },
+  {
+    "id": 34,
+    "question_bg": "Имаме ____ краен срок.",
+    "options": [
+      "Имаме",
+      "музика",
+      "кафе"
+    ],
+    "answer": "Имаме",
+    "translation_en": "We have a deadline."
+  },
+  {
+    "id": 35,
+    "question_bg": "Проектът е почти ____.",
+    "options": [
+      "готов",
+      "офис",
+      "кухня"
+    ],
+    "answer": "готов",
+    "translation_en": "The project is almost ready."
+  },
+  {
+    "id": 36,
+    "question_bg": "____ е наред.",
+    "options": [
+      "Всичко",
+      "фитнес",
+      "офис"
+    ],
+    "answer": "Всичко",
+    "translation_en": "Everything is fine."
+  },
+  {
+    "id": 37,
+    "question_bg": "Имаш ____ време за среща?",
+    "options": [
+      "ли",
+      "време",
+      "колега"
+    ],
+    "answer": "ли",
+    "translation_en": "Do you have time for a meeting?"
+  },
+  {
+    "id": 38,
+    "question_bg": "Ще ти изпратя ____.",
+    "options": [
+      "файла",
+      "информация",
+      "офис"
+    ],
+    "answer": "файла",
+    "translation_en": "I’ll send you the file."
+  },
+  {
+    "id": 39,
+    "question_bg": "Може ____ малко кафе?",
+    "options": [
+      "ли",
+      "книга",
+      "файл"
+    ],
+    "answer": "ли",
+    "translation_en": "Can I have some coffee?"
+  },
+  {
+    "id": 40,
+    "question_bg": "____ отида до кухнята.",
+    "options": [
+      "Ще",
+      "файл",
+      "вечер"
+    ],
+    "answer": "Ще",
+    "translation_en": "I’ll go to the kitchen."
+  },
+  {
+    "id": 41,
+    "question_bg": "____ звъни.",
+    "options": [
+      "Телефонът",
+      "интернет",
+      "проект"
+    ],
+    "answer": "Телефонът",
+    "translation_en": "The phone is ringing."
+  },
+  {
+    "id": 42,
+    "question_bg": "____ отговоря.",
+    "options": [
+      "Ще",
+      "офис",
+      "език"
+    ],
+    "answer": "Ще",
+    "translation_en": "I’ll answer."
+  },
+  {
+    "id": 43,
+    "question_bg": "Имам ____ обаждане.",
+    "options": [
+      "пропуснато",
+      "колега",
+      "въпрос"
+    ],
+    "answer": "пропуснато",
+    "translation_en": "I have a missed call."
+  },
+  {
+    "id": 44,
+    "question_bg": "Ще се ____ обратно.",
+    "options": [
+      "обадя",
+      "офис",
+      "интернет"
+    ],
+    "answer": "обадя",
+    "translation_en": "I’ll call back."
+  },
+  {
+    "id": 45,
+    "question_bg": "Проверих ____.",
+    "options": [
+      "пощата",
+      "колега",
+      "разходка"
+    ],
+    "answer": "пощата",
+    "translation_en": "I checked the mail."
+  },
+  {
+    "id": 46,
+    "question_bg": "Получих ново ____.",
+    "options": [
+      "съобщение",
+      "разходка",
+      "въпрос"
+    ],
+    "answer": "съобщение",
+    "translation_en": "I got a new message."
+  },
+  {
+    "id": 47,
+    "question_bg": "Какво ____ това?",
+    "options": [
+      "означава",
+      "време",
+      "разходка"
+    ],
+    "answer": "означава",
+    "translation_en": "What does that mean?"
+  },
+  {
+    "id": 48,
+    "question_bg": "Не ____.",
+    "options": [
+      "разбирам",
+      "разходка",
+      "проект"
+    ],
+    "answer": "разбирам",
+    "translation_en": "I don’t understand."
+  },
+  {
+    "id": 49,
+    "question_bg": "Може ____ да повторите?",
+    "options": [
+      "ли",
+      "език",
+      "фитнес"
+    ],
+    "answer": "ли",
+    "translation_en": "Can you repeat, please?"
+  },
+  {
+    "id": 50,
+    "question_bg": "Говорите ____ анг____йски?",
+    "options": [
+      "ли",
+      "колега",
+      "имейл"
+    ],
+    "answer": "ли",
+    "translation_en": "Do you speak English?"
+  },
+  {
+    "id": 51,
+    "question_bg": "____ малко.",
+    "options": [
+      "Само",
+      "имейл",
+      "книга"
+    ],
+    "answer": "Само",
+    "translation_en": "Only a little."
+  },
+  {
+    "id": 52,
+    "question_bg": "Работя в ____ компания.",
+    "options": [
+      "софтуерна",
+      "кола",
+      "ден"
+    ],
+    "answer": "софтуерна",
+    "translation_en": "I work in a software company."
+  },
+  {
+    "id": 53,
+    "question_bg": "Той е ____ на проекта.",
+    "options": [
+      "мениджър",
+      "кафе",
+      "език"
+    ],
+    "answer": "мениджър",
+    "translation_en": "He’s the project manager."
+  },
+  {
+    "id": 54,
+    "question_bg": "Срещата беше ____.",
+    "options": [
+      "успешна",
+      "имейл",
+      "вечер"
+    ],
+    "answer": "успешна",
+    "translation_en": "The meeting was successful."
+  },
+  {
+    "id": 55,
+    "question_bg": "Трябва да направим ____.",
+    "options": [
+      "промени",
+      "кафе",
+      "имейл"
+    ],
+    "answer": "промени",
+    "translation_en": "We need to make changes."
+  },
+  {
+    "id": 56,
+    "question_bg": "Ще проверя ____.",
+    "options": [
+      "това",
+      "кафе",
+      "файл"
+    ],
+    "answer": "това",
+    "translation_en": "I’ll check that."
+  },
+  {
+    "id": 57,
+    "question_bg": "Добре свършена ____!",
+    "options": [
+      "работа",
+      "офис",
+      "език"
+    ],
+    "answer": "работа",
+    "translation_en": "Well done!"
+  },
+  {
+    "id": 58,
+    "question_bg": "____ ли въпроси?",
+    "options": [
+      "Имаш",
+      "фитнес",
+      "разходка"
+    ],
+    "answer": "Имаш",
+    "translation_en": "Do you have any questions?"
+  },
+  {
+    "id": 59,
+    "question_bg": "____ е ясно.",
+    "options": [
+      "Всичко",
+      "файл",
+      "помощ"
+    ],
+    "answer": "Всичко",
+    "translation_en": "Everything is clear."
+  },
+  {
+    "id": 60,
+    "question_bg": "Трябва ____ тръгвам.",
+    "options": [
+      "да",
+      "помощ",
+      "утро"
+    ],
+    "answer": "да",
+    "translation_en": "I have to go."
+  },
+  {
+    "id": 61,
+    "question_bg": "Ще се върна след ____.",
+    "options": [
+      "малко",
+      "време",
+      "офис"
+    ],
+    "answer": "малко",
+    "translation_en": "I’ll be back soon."
+  },
+  {
+    "id": 62,
+    "question_bg": "Дн____с ____ натовар____н д____н.",
+    "options": [
+      "е",
+      "кухня",
+      "кола"
+    ],
+    "answer": "е",
+    "translation_en": "Today is a busy day."
+  },
+  {
+    "id": 63,
+    "question_bg": "Имам ____реща ____ клиента.",
+    "options": [
+      "с",
+      "език",
+      "час"
+    ],
+    "answer": "с",
+    "translation_en": "I have a meeting with the client."
+  },
+  {
+    "id": 64,
+    "question_bg": "Ще ____ офертата.",
+    "options": [
+      "изпратя",
+      "утро",
+      "час"
+    ],
+    "answer": "изпратя",
+    "translation_en": "I’ll send the offer."
+  },
+  {
+    "id": 65,
+    "question_bg": "Трябва ____ подготвим презентацията.",
+    "options": [
+      "да",
+      "помощ",
+      "работа"
+    ],
+    "answer": "да",
+    "translation_en": "We need to prepare the presentation."
+  },
+  {
+    "id": 66,
+    "question_bg": "____ нов колега.",
+    "options": [
+      "Имаме",
+      "проект",
+      "офис"
+    ],
+    "answer": "Имаме",
+    "translation_en": "We have a new colleague."
+  },
+  {
+    "id": 67,
+    "question_bg": "____ е моят лаптоп?",
+    "options": [
+      "Къде",
+      "информация",
+      "език"
+    ],
+    "answer": "Къде",
+    "translation_en": "Where is my laptop?"
+  },
+  {
+    "id": 68,
+    "question_bg": "Трябва ____ обновя системата.",
+    "options": [
+      "да",
+      "работа",
+      "офис"
+    ],
+    "answer": "да",
+    "translation_en": "I need to update the system."
+  },
+  {
+    "id": 69,
+    "question_bg": "____ не работи.",
+    "options": [
+      "Интернетът",
+      "работа",
+      "кафе"
+    ],
+    "answer": "Интернетът",
+    "translation_en": "The internet isn’t working."
+  },
+  {
+    "id": 70,
+    "question_bg": "____ рестартирам компютъра.",
+    "options": [
+      "Ще",
+      "ден",
+      "офис"
+    ],
+    "answer": "Ще",
+    "translation_en": "I’ll restart the computer."
+  },
+  {
+    "id": 71,
+    "question_bg": "Имаш ли ____?",
+    "options": [
+      "зарядно",
+      "файл",
+      "проект"
+    ],
+    "answer": "зарядно",
+    "translation_en": "Do you have a charger?"
+  },
+  {
+    "id": 72,
+    "question_bg": "Батерията ми ____.",
+    "options": [
+      "свършва",
+      "фитнес",
+      "кухня"
+    ],
+    "answer": "свършва",
+    "translation_en": "My battery is dying."
+  },
+  {
+    "id": 73,
+    "question_bg": "____ ми линка, моля.",
+    "options": [
+      "Изпрати",
+      "информация",
+      "фитнес"
+    ],
+    "answer": "Изпрати",
+    "translation_en": "Send me the link, please."
+  },
+  {
+    "id": 74,
+    "question_bg": "Файлът е твърде ____.",
+    "options": [
+      "голям",
+      "филм",
+      "разходка"
+    ],
+    "answer": "голям",
+    "translation_en": "The file is too big."
+  },
+  {
+    "id": 75,
+    "question_bg": "Нека използваме Google ____.",
+    "options": [
+      "Drive",
+      "кола",
+      "колега"
+    ],
+    "answer": "Drive",
+    "translation_en": "Let’s use Google Drive."
+  },
+  {
+    "id": 76,
+    "question_bg": "____ имейла си.",
+    "options": [
+      "Провери",
+      "кафе",
+      "утро"
+    ],
+    "answer": "Провери",
+    "translation_en": "Check your email."
+  },
+  {
+    "id": 77,
+    "question_bg": "____ време свършва в шест.",
+    "options": [
+      "Работното",
+      "кухня",
+      "вечер"
+    ],
+    "answer": "Работното",
+    "translation_en": "Work ends at six."
+  },
+  {
+    "id": 78,
+    "question_bg": "Ще се видим утре в ____.",
+    "options": [
+      "офиса",
+      "вечер",
+      "офис"
+    ],
+    "answer": "офиса",
+    "translation_en": "See you tomorrow at the office."
+  },
+  {
+    "id": 79,
+    "question_bg": "Имам нужда ____ почивка.",
+    "options": [
+      "от",
+      "имейл",
+      "помощ"
+    ],
+    "answer": "от",
+    "translation_en": "I need a break."
+  },
+  {
+    "id": 80,
+    "question_bg": "Ще отида ____ разходка.",
+    "options": [
+      "на",
+      "интернет",
+      "работа"
+    ],
+    "answer": "на",
+    "translation_en": "I’ll go for a walk."
+  },
+  {
+    "id": 81,
+    "question_bg": "____ да чета книги.",
+    "options": [
+      "Обичам",
+      "офис",
+      "интернет"
+    ],
+    "answer": "Обичам",
+    "translation_en": "I like reading books."
+  },
+  {
+    "id": 82,
+    "question_bg": "Гледах ____ филм.",
+    "options": [
+      "интересен",
+      "кола",
+      "кафе"
+    ],
+    "answer": "интересен",
+    "translation_en": "I watched an interesting movie."
+  },
+  {
+    "id": 83,
+    "question_bg": "____ тази музика.",
+    "options": [
+      "Харесвам",
+      "кафе",
+      "книга"
+    ],
+    "answer": "Харесвам",
+    "translation_en": "I like this music."
+  },
+  {
+    "id": 84,
+    "question_bg": "Имам ____ хоби.",
+    "options": [
+      "ново",
+      "проект",
+      "време"
+    ],
+    "answer": "ново",
+    "translation_en": "I have a new hobby."
+  },
+  {
+    "id": 85,
+    "question_bg": "Ходя на фитнес ____ работа.",
+    "options": [
+      "след",
+      "файл",
+      "офис"
+    ],
+    "answer": "след",
+    "translation_en": "I go to the gym after work."
+  },
+  {
+    "id": 86,
+    "question_bg": "Обичам ____ пътувам.",
+    "options": [
+      "да",
+      "имейл",
+      "книга"
+    ],
+    "answer": "да",
+    "translation_en": "I love to travel."
+  },
+  {
+    "id": 87,
+    "question_bg": "Бях в планината миналия ____.",
+    "options": [
+      "уикенд",
+      "утро",
+      "въпрос"
+    ],
+    "answer": "уикенд",
+    "translation_en": "I was in the mountains last weekend."
+  },
+  {
+    "id": 88,
+    "question_bg": "Искам да науча ____ език.",
+    "options": [
+      "нов",
+      "утро",
+      "работа"
+    ],
+    "answer": "нов",
+    "translation_en": "I want to learn a new language."
+  },
+  {
+    "id": 89,
+    "question_bg": "____ български.",
+    "options": [
+      "Уча",
+      "информация",
+      "офис"
+    ],
+    "answer": "Уча",
+    "translation_en": "I’m learning Bulgarian."
+  },
+  {
+    "id": 90,
+    "question_bg": "Българският е интересен ____.",
+    "options": [
+      "език",
+      "помощ",
+      "въпрос"
+    ],
+    "answer": "език",
+    "translation_en": "Bulgarian is an interesting language."
+  },
+  {
+    "id": 91,
+    "question_bg": "Правя грешки, ____ се уча.",
+    "options": [
+      "но",
+      "работа",
+      "интернет"
+    ],
+    "answer": "но",
+    "translation_en": "I make mistakes, but I’m learning."
+  },
+  {
+    "id": 92,
+    "question_bg": "Благодаря ____ помощта!",
+    "options": [
+      "за",
+      "кола",
+      "музика"
+    ],
+    "answer": "за",
+    "translation_en": "Thank you for your help!"
+  },
+  {
+    "id": 93,
+    "question_bg": "Много ____ любезни.",
+    "options": [
+      "сте",
+      "офис",
+      "интернет"
+    ],
+    "answer": "сте",
+    "translation_en": "You’re very kind."
+  },
+  {
+    "id": 94,
+    "question_bg": "Извинете, ____ ли въпрос?",
+    "options": [
+      "може",
+      "колега",
+      "въпрос"
+    ],
+    "answer": "може",
+    "translation_en": "Excuse me, may I ask a question?"
+  },
+  {
+    "id": 95,
+    "question_bg": "Къде се ____ банкоматът?",
+    "options": [
+      "намира",
+      "време",
+      "имейл"
+    ],
+    "answer": "намира",
+    "translation_en": "Where is the ATM?"
+  },
+  {
+    "id": 96,
+    "question_bg": "Колко струва ____?",
+    "options": [
+      "това",
+      "книга",
+      "утро"
+    ],
+    "answer": "това",
+    "translation_en": "How much does this cost?"
+  },
+  {
+    "id": 97,
+    "question_bg": "____ искал сметката, моля.",
+    "options": [
+      "Бих",
+      "въпрос",
+      "офис"
+    ],
+    "answer": "Бих",
+    "translation_en": "I’d like the bill, please."
+  },
+  {
+    "id": 98,
+    "question_bg": "Къде е най-близкият ____?",
+    "options": [
+      "магазин",
+      "утро",
+      "вечер"
+    ],
+    "answer": "магазин",
+    "translation_en": "Where is the nearest store?"
+  },
+  {
+    "id": 99,
+    "question_bg": "____ нужда от лекар.",
+    "options": [
+      "Имам",
+      "интернет",
+      "кола"
+    ],
+    "answer": "Имам",
+    "translation_en": "I need a doctor."
+  },
+  {
+    "id": 100,
+    "question_bg": "____ вечер!",
+    "options": [
+      "Приятна",
+      "работа",
+      "офис"
+    ],
+    "answer": "Приятна",
+    "translation_en": "Have a pleasant evening!"
+  },
+  {
+    "id": 101,
+    "question_bg": "Аз ям ____",
+    "options": [
+      "ябълка",
+      "карам",
+      "говоря"
+    ],
+    "answer": "ябълка",
+    "translation_en": "I eat an apple."
+  },
+  {
+    "id": 102,
+    "question_bg": "Ти пиеш ____",
+    "options": [
+      "вода",
+      "ям",
+      "играя"
+    ],
+    "answer": "вода",
+    "translation_en": "You drink water."
+  },
+  {
+    "id": 103,
+    "question_bg": "Той чете ____",
+    "options": [
+      "книга",
+      "карам",
+      "купувам"
+    ],
+    "answer": "книга",
+    "translation_en": "He reads a book."
+  },
+  {
+    "id": 104,
+    "question_bg": "Тя ____ писмо.",
+    "options": [
+      "пише",
+      "имам",
+      "ходя"
+    ],
+    "answer": "пише",
+    "translation_en": "She writes a letter."
+  },
+  {
+    "id": 105,
+    "question_bg": "Ние ____ филм.",
+    "options": [
+      "гледаме",
+      "работя",
+      "рисувам"
+    ],
+    "answer": "гледаме",
+    "translation_en": "We watch a movie."
+  },
+  {
+    "id": 106,
+    "question_bg": "Вие ____ футбол.",
+    "options": [
+      "играете",
+      "играя",
+      "имам"
+    ],
+    "answer": "играете",
+    "translation_en": "You play football."
+  },
+  {
+    "id": 107,
+    "question_bg": "Те живеят в ____",
+    "options": [
+      "град",
+      "уча",
+      "ходя"
+    ],
+    "answer": "град",
+    "translation_en": "They live in a city."
+  },
+  {
+    "id": 108,
+    "question_bg": "Аз уча ____",
+    "options": [
+      "български",
+      "работя",
+      "имам"
+    ],
+    "answer": "български",
+    "translation_en": "I study Bulgarian."
+  },
+  {
+    "id": 109,
+    "question_bg": "Ти спиш ____",
+    "options": [
+      "добре",
+      "гледам",
+      "чета"
+    ],
+    "answer": "добре",
+    "translation_en": "You sleep well."
+  },
+  {
+    "id": 110,
+    "question_bg": "Той работи ____ ден.",
+    "options": [
+      "всеки",
+      "слушам",
+      "уча"
+    ],
+    "answer": "всеки",
+    "translation_en": "He works every day."
+  },
+  {
+    "id": 111,
+    "question_bg": "Тя ____ вечеря.",
+    "options": [
+      "готви",
+      "чета",
+      "играя"
+    ],
+    "answer": "готви",
+    "translation_en": "She cooks dinner."
+  },
+  {
+    "id": 112,
+    "question_bg": "Ние ____ до морето.",
+    "options": [
+      "пътуваме",
+      "говоря",
+      "гледам"
+    ],
+    "answer": "пътуваме",
+    "translation_en": "We travel to the sea."
+  },
+  {
+    "id": 113,
+    "question_bg": "Вие пеете ____",
+    "options": [
+      "песен",
+      "пия",
+      "спя"
+    ],
+    "answer": "песен",
+    "translation_en": "You sing a song."
+  },
+  {
+    "id": 114,
+    "question_bg": "Те танцуват ____",
+    "options": [
+      "красиво",
+      "спя",
+      "съм"
+    ],
+    "answer": "красиво",
+    "translation_en": "They dance beautifully."
+  },
+  {
+    "id": 115,
+    "question_bg": "Аз ____ кола.",
+    "options": [
+      "карам",
+      "пиша",
+      "рисувам"
+    ],
+    "answer": "карам",
+    "translation_en": "I drive a car."
+  },
+  {
+    "id": 116,
+    "question_bg": "Ти ходиш на ____",
+    "options": [
+      "училище",
+      "играя",
+      "пея"
+    ],
+    "answer": "училище",
+    "translation_en": "You go to school."
+  },
+  {
+    "id": 117,
+    "question_bg": "Той слуша ____",
+    "options": [
+      "музика",
+      "чакам",
+      "спя"
+    ],
+    "answer": "музика",
+    "translation_en": "He listens to music."
+  },
+  {
+    "id": 118,
+    "question_bg": "Тя рисува ____",
+    "options": [
+      "картина",
+      "купувам",
+      "пия"
+    ],
+    "answer": "картина",
+    "translation_en": "She paints a picture."
+  },
+  {
+    "id": 119,
+    "question_bg": "Ние ____ хляб.",
+    "options": [
+      "купуваме",
+      "гледам",
+      "чакам"
+    ],
+    "answer": "купуваме",
+    "translation_en": "We buy bread."
+  },
+  {
+    "id": 120,
+    "question_bg": "Вие ____ автобуса.",
+    "options": [
+      "чакате",
+      "спя",
+      "играя"
+    ],
+    "answer": "чакате",
+    "translation_en": "You wait for the bus."
+  },
+  {
+    "id": 121,
+    "question_bg": "Те ____ български.",
+    "options": [
+      "говорят",
+      "съм",
+      "говоря"
+    ],
+    "answer": "говорят",
+    "translation_en": "They speak Bulgarian."
+  },
+  {
+    "id": 122,
+    "question_bg": "Аз стоя ____",
+    "options": [
+      "вкъщи",
+      "пея",
+      "чакам"
+    ],
+    "answer": "вкъщи",
+    "translation_en": "I stay at home."
+  },
+  {
+    "id": 123,
+    "question_bg": "Ти ____ телевизия.",
+    "options": [
+      "гледаш",
+      "ходя",
+      "рисувам"
+    ],
+    "answer": "гледаш",
+    "translation_en": "You watch TV."
+  },
+  {
+    "id": 124,
+    "question_bg": "Той ____ яке.",
+    "options": [
+      "носи",
+      "говоря",
+      "уча"
+    ],
+    "answer": "носи",
+    "translation_en": "He wears a jacket."
+  },
+  {
+    "id": 125,
+    "question_bg": "Тя ____ кафе.",
+    "options": [
+      "пие",
+      "чета",
+      "играя"
+    ],
+    "answer": "пие",
+    "translation_en": "She drinks coffee."
+  },
+  {
+    "id": 126,
+    "question_bg": "Ние обичаме ____",
+    "options": [
+      "природата",
+      "живея",
+      "спя"
+    ],
+    "answer": "природата",
+    "translation_en": "We love nature."
+  },
+  {
+    "id": 127,
+    "question_bg": "Вие пишете ____",
+    "options": [
+      "имейл",
+      "уча",
+      "ходя"
+    ],
+    "answer": "имейл",
+    "translation_en": "You write an email."
+  },
+  {
+    "id": 128,
+    "question_bg": "Те играят ____",
+    "options": [
+      "шах",
+      "играя",
+      "живея"
+    ],
+    "answer": "шах",
+    "translation_en": "They play chess."
+  },
+  {
+    "id": 129,
+    "question_bg": "Аз обядвам ____ приятели.",
+    "options": [
+      "с",
+      "работя",
+      "пея"
+    ],
+    "answer": "с",
+    "translation_en": "I have lunch with friends."
+  },
+  {
+    "id": 130,
+    "question_bg": "Ти четеш ____",
+    "options": [
+      "вестник",
+      "играя",
+      "съм"
+    ],
+    "answer": "вестник",
+    "translation_en": "You read a newspaper."
+  },
+  {
+    "id": 131,
+    "question_bg": "Той купува ____",
+    "options": [
+      "подарък",
+      "говоря",
+      "карам"
+    ],
+    "answer": "подарък",
+    "translation_en": "He buys a gift."
+  },
+  {
+    "id": 132,
+    "question_bg": "Тя ____ велосипед.",
+    "options": [
+      "кара",
+      "чакам",
+      "играя"
+    ],
+    "answer": "кара",
+    "translation_en": "She rides a bicycle."
+  },
+  {
+    "id": 133,
+    "question_bg": "Ние ____ уроци.",
+    "options": [
+      "учим",
+      "спя",
+      "съм"
+    ],
+    "answer": "учим",
+    "translation_en": "We study lessons."
+  },
+  {
+    "id": 134,
+    "question_bg": "Вие тичате ____ парка.",
+    "options": [
+      "в",
+      "уча",
+      "живея"
+    ],
+    "answer": "в",
+    "translation_en": "You run in the park."
+  },
+  {
+    "id": 135,
+    "question_bg": "Те ____ дълго.",
+    "options": [
+      "спят",
+      "ходя",
+      "имам"
+    ],
+    "answer": "спят",
+    "translation_en": "They sleep long."
+  },
+  {
+    "id": 136,
+    "question_bg": "Аз говоря по ____",
+    "options": [
+      "телефона",
+      "уча",
+      "пия"
+    ],
+    "answer": "телефона",
+    "translation_en": "I talk on the phone."
+  },
+  {
+    "id": 137,
+    "question_bg": "Ти ____ чай.",
+    "options": [
+      "пиеш",
+      "спя",
+      "чакам"
+    ],
+    "answer": "пиеш",
+    "translation_en": "You drink tea."
+  },
+  {
+    "id": 138,
+    "question_bg": "Той ____ душ.",
+    "options": [
+      "взема",
+      "пея",
+      "ходя"
+    ],
+    "answer": "взема",
+    "translation_en": "He takes a shower."
+  },
+  {
+    "id": 139,
+    "question_bg": "Тя ____ рокля.",
+    "options": [
+      "носи",
+      "пия",
+      "рисувам"
+    ],
+    "answer": "носи",
+    "translation_en": "She wears a dress."
+  },
+  {
+    "id": 140,
+    "question_bg": "Ние вечеряме у ____",
+    "options": [
+      "дома",
+      "пия",
+      "купувам"
+    ],
+    "answer": "дома",
+    "translation_en": "We have dinner at home."
+  },
+  {
+    "id": 141,
+    "question_bg": "Вие ____ деца.",
+    "options": [
+      "гледате",
+      "пиша",
+      "ям"
+    ],
+    "answer": "гледате",
+    "translation_en": "You look after children."
+  },
+  {
+    "id": 142,
+    "question_bg": "Те пътуват ____ влак.",
+    "options": [
+      "с",
+      "играя",
+      "гледам"
+    ],
+    "answer": "с",
+    "translation_en": "They travel by train."
+  },
+  {
+    "id": 143,
+    "question_bg": "Аз ____ ключовете.",
+    "options": [
+      "търся",
+      "живея",
+      "ям"
+    ],
+    "answer": "търся",
+    "translation_en": "I’m looking for the keys."
+  },
+  {
+    "id": 144,
+    "question_bg": "Ти чистиш ____",
+    "options": [
+      "стаята",
+      "съм",
+      "говоря"
+    ],
+    "answer": "стаята",
+    "translation_en": "You clean the room."
+  },
+  {
+    "id": 145,
+    "question_bg": "Той помага ____ приятел.",
+    "options": [
+      "на",
+      "слушам",
+      "имам"
+    ],
+    "answer": "на",
+    "translation_en": "He helps a friend."
+  },
+  {
+    "id": 146,
+    "question_bg": "Тя отговаря ____ въпрос.",
+    "options": [
+      "на",
+      "говоря",
+      "ям"
+    ],
+    "answer": "на",
+    "translation_en": "She answers a question."
+  },
+  {
+    "id": 147,
+    "question_bg": "Ние играем ____",
+    "options": [
+      "карти",
+      "пия",
+      "чакам"
+    ],
+    "answer": "карти",
+    "translation_en": "We play cards."
+  },
+  {
+    "id": 148,
+    "question_bg": "Вие пеете ____",
+    "options": [
+      "красиво",
+      "работя",
+      "ходя"
+    ],
+    "answer": "красиво",
+    "translation_en": "You sing beautifully."
+  },
+  {
+    "id": 149,
+    "question_bg": "Те работят ____",
+    "options": [
+      "усилено",
+      "рисувам",
+      "пея"
+    ],
+    "answer": "усилено",
+    "translation_en": "They work hard."
+  },
+  {
+    "id": 150,
+    "question_bg": "Аз обичам ____",
+    "options": [
+      "шоколад",
+      "ям",
+      "чета"
+    ],
+    "answer": "шоколад",
+    "translation_en": "I love chocolate."
+  },
+  {
+    "id": 151,
+    "question_bg": "Ти пишеш ____",
+    "options": [
+      "домашно",
+      "ходя",
+      "ям"
+    ],
+    "answer": "домашно",
+    "translation_en": "You do homework."
+  },
+  {
+    "id": 152,
+    "question_bg": "Той учи ____",
+    "options": [
+      "английски",
+      "карам",
+      "пиша"
+    ],
+    "answer": "английски",
+    "translation_en": "He studies English."
+  },
+  {
+    "id": 153,
+    "question_bg": "Тя чете ____",
+    "options": [
+      "роман",
+      "слушам",
+      "пея"
+    ],
+    "answer": "роман",
+    "translation_en": "She reads a novel."
+  },
+  {
+    "id": 154,
+    "question_bg": "Ние пием ____",
+    "options": [
+      "сок",
+      "ям",
+      "готвя"
+    ],
+    "answer": "сок",
+    "translation_en": "We drink juice."
+  },
+  {
+    "id": 155,
+    "question_bg": "Вие носите ____",
+    "options": [
+      "шапка",
+      "рисувам",
+      "играя"
+    ],
+    "answer": "шапка",
+    "translation_en": "You wear a hat."
+  },
+  {
+    "id": 156,
+    "question_bg": "Те ____ влака.",
+    "options": [
+      "чакат",
+      "готвя",
+      "живея"
+    ],
+    "answer": "чакат",
+    "translation_en": "They wait for the train."
+  },
+  {
+    "id": 157,
+    "question_bg": "Аз имам ____",
+    "options": [
+      "куче",
+      "купувам",
+      "пия"
+    ],
+    "answer": "куче",
+    "translation_en": "I have a dog."
+  },
+  {
+    "id": 158,
+    "question_bg": "Ти имаш ____",
+    "options": [
+      "котка",
+      "имам",
+      "уча"
+    ],
+    "answer": "котка",
+    "translation_en": "You have a cat."
+  },
+  {
+    "id": 159,
+    "question_bg": "Той ____ велосипед.",
+    "options": [
+      "има",
+      "говоря",
+      "карам"
+    ],
+    "answer": "има",
+    "translation_en": "He has a bicycle."
+  },
+  {
+    "id": 160,
+    "question_bg": "Тя ____ телефон.",
+    "options": [
+      "има",
+      "уча",
+      "ходя"
+    ],
+    "answer": "има",
+    "translation_en": "She has a phone."
+  },
+  {
+    "id": 161,
+    "question_bg": "Ние имаме ____",
+    "options": [
+      "градина",
+      "гледам",
+      "чета"
+    ],
+    "answer": "градина",
+    "translation_en": "We have a garden."
+  },
+  {
+    "id": 162,
+    "question_bg": "Вие имате ____",
+    "options": [
+      "апартамент",
+      "кола",
+      "ходя"
+    ],
+    "answer": "апартамент",
+    "translation_en": "You have an apartment."
+  },
+  {
+    "id": 163,
+    "question_bg": "Те имат ____",
+    "options": [
+      "кола",
+      "телевизия",
+      "хладилник"
+    ],
+    "answer": "кола",
+    "translation_en": "They have a car."
+  },
+  {
+    "id": 164,
+    "question_bg": "Аз съм ____",
+    "options": [
+      "щастлив",
+      "ям",
+      "чета"
+    ],
+    "answer": "щастлив",
+    "translation_en": "I am happy."
+  },
+  {
+    "id": 165,
+    "question_bg": "Ти си ____",
+    "options": [
+      "умен",
+      "слушам",
+      "чакам"
+    ],
+    "answer": "умен",
+    "translation_en": "You are smart."
+  },
+  {
+    "id": 166,
+    "question_bg": "Той е ____",
+    "options": [
+      "висок",
+      "ям",
+      "карам"
+    ],
+    "answer": "висок",
+    "translation_en": "He is tall."
+  },
+  {
+    "id": 167,
+    "question_bg": "Тя е ____",
+    "options": [
+      "красива",
+      "стара",
+      "умна"
+    ],
+    "answer": "красива",
+    "translation_en": "She is beautiful."
+  },
+  {
+    "id": 168,
+    "question_bg": "Ние сме ____",
+    "options": [
+      "готови",
+      "слушам",
+      "карам"
+    ],
+    "answer": "готови",
+    "translation_en": "We are ready."
+  },
+  {
+    "id": 169,
+    "question_bg": "Вие сте ____",
+    "options": [
+      "силни",
+      "слаби",
+      "умни"
+    ],
+    "answer": "силни",
+    "translation_en": "You are strong."
+  },
+  {
+    "id": 170,
+    "question_bg": "Те са ____",
+    "options": [
+      "млади",
+      "умни",
+      "стари"
+    ],
+    "answer": "млади",
+    "translation_en": "They are young."
+  },
+  {
+    "id": 171,
+    "question_bg": "Аз гледам ____",
+    "options": [
+      "звезди",
+      "телевизия",
+      "филми"
+    ],
+    "answer": "звезди",
+    "translation_en": "I watch stars."
+  },
+  {
+    "id": 172,
+    "question_bg": "Ти тичаш ____",
+    "options": [
+      "бързо",
+      "спя",
+      "уча"
+    ],
+    "answer": "бързо",
+    "translation_en": "You run fast."
+  },
+  {
+    "id": 173,
+    "question_bg": "Той спи ____",
+    "options": [
+      "спокойно",
+      "спя",
+      "готвя"
+    ],
+    "answer": "спокойно",
+    "translation_en": "He sleeps peacefully."
+  },
+  {
+    "id": 174,
+    "question_bg": "Тя ____ супа.",
+    "options": [
+      "готви",
+      "пиша",
+      "пия"
+    ],
+    "answer": "готви",
+    "translation_en": "She cooks soup."
+  },
+  {
+    "id": 175,
+    "question_bg": "Ние ____ автобус.",
+    "options": [
+      "караме",
+      "слушам",
+      "спя"
+    ],
+    "answer": "караме",
+    "translation_en": "We drive a bus."
+  },
+  {
+    "id": 176,
+    "question_bg": "Вие обичате ____",
+    "options": [
+      "спорт",
+      "коли",
+      "храна"
+    ],
+    "answer": "спорт",
+    "translation_en": "You love sports."
+  },
+  {
+    "id": 177,
+    "question_bg": "Те рисуват ____",
+    "options": [
+      "добре",
+      "зле",
+      "слушам"
+    ],
+    "answer": "добре",
+    "translation_en": "They draw well."
+  },
+  {
+    "id": 178,
+    "question_bg": "Аз пиша ____",
+    "options": [
+      "книга",
+      "ям",
+      "гледам"
+    ],
+    "answer": "книга",
+    "translation_en": "I write a book."
+  },
+  {
+    "id": 179,
+    "question_bg": "Ти учиш ____",
+    "options": [
+      "математика",
+      "история",
+      "география"
+    ],
+    "answer": "математика",
+    "translation_en": "You study math."
+  },
+  {
+    "id": 180,
+    "question_bg": "Той гледа ____",
+    "options": [
+      "филм",
+      "игра",
+      "уча"
+    ],
+    "answer": "филм",
+    "translation_en": "He watches a movie."
+  },
+  {
+    "id": 181,
+    "question_bg": "Тя носи ____",
+    "options": [
+      "обувки",
+      "крака",
+      "шапка"
+    ],
+    "answer": "обувки",
+    "translation_en": "She wears shoes."
+  },
+  {
+    "id": 182,
+    "question_bg": "Ние ____ време.",
+    "options": [
+      "имаме",
+      "нямаме",
+      "караме"
+    ],
+    "answer": "имаме",
+    "translation_en": "We have time."
+  },
+  {
+    "id": 183,
+    "question_bg": "Вие чакате ____ си.",
+    "options": [
+      "реда",
+      "работите",
+      "живеете"
+    ],
+    "answer": "реда",
+    "translation_en": "You wait your turn."
+  },
+  {
+    "id": 184,
+    "question_bg": "Те ____ кафе.",
+    "options": [
+      "пият",
+      "ядат",
+      "ходят"
+    ],
+    "answer": "пият",
+    "translation_en": "They drink coffee."
+  },
+  {
+    "id": 185,
+    "question_bg": "Аз готвя ____",
+    "options": [
+      "обяд",
+      "вечеря",
+      "закуска"
+    ],
+    "answer": "обяд",
+    "translation_en": "I cook lunch."
+  },
+  {
+    "id": 186,
+    "question_bg": "Ти спиш ____",
+    "options": [
+      "малко",
+      "много",
+      "чета"
+    ],
+    "answer": "малко",
+    "translation_en": "You sleep little."
+  },
+  {
+    "id": 187,
+    "question_bg": "Той ____ бързо.",
+    "options": [
+      "говори",
+      "работи",
+      "пее"
+    ],
+    "answer": "говори",
+    "translation_en": "He speaks fast."
+  },
+  {
+    "id": 188,
+    "question_bg": "Тя ____ всеки ден.",
+    "options": [
+      "тича",
+      "кара",
+      "купува"
+    ],
+    "answer": "тича",
+    "translation_en": "She runs every day."
+  },
+  {
+    "id": 189,
+    "question_bg": "Ние ядем ____",
+    "options": [
+      "вечеря",
+      "закуска",
+      "обяд"
+    ],
+    "answer": "вечеря",
+    "translation_en": "We eat dinner."
+  },
+  {
+    "id": 190,
+    "question_bg": "Вие помагате ____",
+    "options": [
+      "често",
+      "слушам",
+      "пея"
+    ],
+    "answer": "често",
+    "translation_en": "You help often."
+  },
+  {
+    "id": 191,
+    "question_bg": "Те ____ навън.",
+    "options": [
+      "работят",
+      "работя",
+      "живея"
+    ],
+    "answer": "работят",
+    "translation_en": "They work outside."
+  },
+  {
+    "id": 192,
+    "question_bg": "Аз ____ приятел.",
+    "options": [
+      "имам",
+      "живея",
+      "пиша"
+    ],
+    "answer": "имам",
+    "translation_en": "I have a friend."
+  },
+  {
+    "id": 193,
+    "question_bg": "Ти ____ мляко.",
+    "options": [
+      "пиеш",
+      "рисуваш",
+      "чакаш"
+    ],
+    "answer": "пиеш",
+    "translation_en": "You drink milk."
+  },
+  {
+    "id": 194,
+    "question_bg": "Той учи ____",
+    "options": [
+      "история",
+      "география",
+      "математика"
+    ],
+    "answer": "история",
+    "translation_en": "He studies history."
+  },
+  {
+    "id": 195,
+    "question_bg": "Тя ____ снимки.",
+    "options": [
+      "гледа",
+      "чете",
+      "слуша"
+    ],
+    "answer": "гледа",
+    "translation_en": "She looks at pictures."
+  },
+  {
+    "id": 196,
+    "question_bg": "Ние ____ пеша.",
+    "options": [
+      "ходим",
+      "готвим",
+      "купуваме"
+    ],
+    "answer": "ходим",
+    "translation_en": "We walk on foot."
+  },
+  {
+    "id": 197,
+    "question_bg": "Вие ____ чанти.",
+    "options": [
+      "носите",
+      "карате",
+      "пиете"
+    ],
+    "answer": "носите",
+    "translation_en": "You carry bags."
+  },
+  {
+    "id": 198,
+    "question_bg": "Те четат ____",
+    "options": [
+      "книги",
+      "музика",
+      "телевизия"
+    ],
+    "answer": "книги",
+    "translation_en": "They read books."
+  },
+  {
+    "id": 199,
+    "question_bg": "Аз пиша ____",
+    "options": [
+      "писмо",
+      "книга",
+      "лист"
+    ],
+    "answer": "писмо",
+    "translation_en": "I write a letter."
+  },
+  {
+    "id": 200,
+    "question_bg": "Ти четеш ____",
+    "options": [
+      "книга",
+      "песен",
+      "тетрадка"
+    ],
+    "answer": "книга",
+    "translation_en": "You read a book."
+  },
+  {
+    "id": 201,
+    "question_bg": "Той ____ телевизия.",
+    "options": [
+      "гледа",
+      "гледам",
+      "рисувам"
+    ],
+    "answer": "гледа",
+    "translation_en": "He watches television."
+  },
+  {
+    "id": 202,
+    "question_bg": "Тя ____ хляб.",
+    "options": [
+      "купува",
+      "карам",
+      "пиша"
+    ],
+    "answer": "купува",
+    "translation_en": "She buys bread."
+  }
+]

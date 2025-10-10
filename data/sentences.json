@@ -1,0 +1,497 @@
+[
+  {
+    "id": 1,
+    "bulgarian": "Добро утро!",
+    "english": "Good morning!"
+  },
+  {
+    "id": 2,
+    "bulgarian": "Как си днес?",
+    "english": "How are you today?"
+  },
+  {
+    "id": 3,
+    "bulgarian": "Благодаря, добре съм.",
+    "english": "Thank you, I’m fine."
+  },
+  {
+    "id": 4,
+    "bulgarian": "Какво ново има?",
+    "english": "What’s new?"
+  },
+  {
+    "id": 5,
+    "bulgarian": "Радвам се да те видя.",
+    "english": "I’m glad to see you."
+  },
+  {
+    "id": 6,
+    "bulgarian": "Как мина денят ти?",
+    "english": "How was your day?"
+  },
+  {
+    "id": 7,
+    "bulgarian": "Имаш ли планове за вечерта?",
+    "english": "Do you have plans for the evening?"
+  },
+  {
+    "id": 8,
+    "bulgarian": "Да отидем на кафе.",
+    "english": "Let’s go for a coffee."
+  },
+  {
+    "id": 9,
+    "bulgarian": "Работя от вкъщи.",
+    "english": "I work from home."
+  },
+  {
+    "id": 10,
+    "bulgarian": "Имам много работа днес.",
+    "english": "I have a lot of work today."
+  },
+  {
+    "id": 11,
+    "bulgarian": "Ще имаме среща в 10 часа.",
+    "english": "We’ll have a meeting at 10 o’clock."
+  },
+  {
+    "id": 12,
+    "bulgarian": "Може ли да обсъдим това по-късно?",
+    "english": "Can we discuss this later?"
+  },
+  {
+    "id": 13,
+    "bulgarian": "Изпратих имейла вчера.",
+    "english": "I sent the email yesterday."
+  },
+  {
+    "id": 14,
+    "bulgarian": "Моля, потвърди получаването.",
+    "english": "Please confirm receipt."
+  },
+  {
+    "id": 15,
+    "bulgarian": "Ще подготвя доклада утре.",
+    "english": "I’ll prepare the report tomorrow."
+  },
+  {
+    "id": 16,
+    "bulgarian": "Работим по нов проект.",
+    "english": "We’re working on a new project."
+  },
+  {
+    "id": 17,
+    "bulgarian": "Може ли помощ с това?",
+    "english": "Can I get help with this?"
+  },
+  {
+    "id": 18,
+    "bulgarian": "Имам нужда от повече информация.",
+    "english": "I need more information."
+  },
+  {
+    "id": 19,
+    "bulgarian": "Това е добра идея.",
+    "english": "That’s a good idea."
+  },
+  {
+    "id": 20,
+    "bulgarian": "Благодаря за съдействието.",
+    "english": "Thank you for your cooperation."
+  },
+  {
+    "id": 21,
+    "bulgarian": "Ще се свържа с теб по-късно.",
+    "english": "I’ll contact you later."
+  },
+  {
+    "id": 22,
+    "bulgarian": "Извинявай за закъснението.",
+    "english": "Sorry for the delay."
+  },
+  {
+    "id": 23,
+    "bulgarian": "Няма проблем.",
+    "english": "No problem."
+  },
+  {
+    "id": 24,
+    "bulgarian": "Ще се видим утре.",
+    "english": "See you tomorrow."
+  },
+  {
+    "id": 25,
+    "bulgarian": "Приятен ден!",
+    "english": "Have a nice day!"
+  },
+  {
+    "id": 26,
+    "bulgarian": "Колко е часът?",
+    "english": "What time is it?"
+  },
+  {
+    "id": 27,
+    "bulgarian": "Обядът е в дванайсет.",
+    "english": "Lunch is at twelve."
+  },
+  {
+    "id": 28,
+    "bulgarian": "Ще закъснея малко.",
+    "english": "I’ll be a little late."
+  },
+  {
+    "id": 29,
+    "bulgarian": "Къде е срещата?",
+    "english": "Where is the meeting?"
+  },
+  {
+    "id": 30,
+    "bulgarian": "На третия етаж.",
+    "english": "On the third floor."
+  },
+  {
+    "id": 31,
+    "bulgarian": "Това е моят колега.",
+    "english": "This is my colleague."
+  },
+  {
+    "id": 32,
+    "bulgarian": "Работим заедно.",
+    "english": "We work together."
+  },
+  {
+    "id": 33,
+    "bulgarian": "Тя е нова в екипа.",
+    "english": "She’s new to the team."
+  },
+  {
+    "id": 34,
+    "bulgarian": "Имаме краен срок.",
+    "english": "We have a deadline."
+  },
+  {
+    "id": 35,
+    "bulgarian": "Проектът е почти готов.",
+    "english": "The project is almost ready."
+  },
+  {
+    "id": 36,
+    "bulgarian": "Всичко е наред.",
+    "english": "Everything is fine."
+  },
+  {
+    "id": 37,
+    "bulgarian": "Имаш ли време за среща?",
+    "english": "Do you have time for a meeting?"
+  },
+  {
+    "id": 38,
+    "bulgarian": "Ще ти изпратя файла.",
+    "english": "I’ll send you the file."
+  },
+  {
+    "id": 39,
+    "bulgarian": "Може ли малко кафе?",
+    "english": "Can I have some coffee?"
+  },
+  {
+    "id": 40,
+    "bulgarian": "Ще отида до кухнята.",
+    "english": "I’ll go to the kitchen."
+  },
+  {
+    "id": 41,
+    "bulgarian": "Телефонът звъни.",
+    "english": "The phone is ringing."
+  },
+  {
+    "id": 42,
+    "bulgarian": "Ще отговоря.",
+    "english": "I’ll answer."
+  },
+  {
+    "id": 43,
+    "bulgarian": "Имам пропуснато обаждане.",
+    "english": "I have a missed call."
+  },
+  {
+    "id": 44,
+    "bulgarian": "Ще се обадя обратно.",
+    "english": "I’ll call back."
+  },
+  {
+    "id": 45,
+    "bulgarian": "Проверих пощата.",
+    "english": "I checked the mail."
+  },
+  {
+    "id": 46,
+    "bulgarian": "Получих ново съобщение.",
+    "english": "I got a new message."
+  },
+  {
+    "id": 47,
+    "bulgarian": "Какво означава това?",
+    "english": "What does that mean?"
+  },
+  {
+    "id": 48,
+    "bulgarian": "Не разбирам.",
+    "english": "I don’t understand."
+  },
+  {
+    "id": 49,
+    "bulgarian": "Може ли да повторите?",
+    "english": "Can you repeat, please?"
+  },
+  {
+    "id": 50,
+    "bulgarian": "Говорите ли английски?",
+    "english": "Do you speak English?"
+  },
+  {
+    "id": 51,
+    "bulgarian": "Само малко.",
+    "english": "Only a little."
+  },
+  {
+    "id": 52,
+    "bulgarian": "Работя в софтуерна компания.",
+    "english": "I work in a software company."
+  },
+  {
+    "id": 53,
+    "bulgarian": "Той е мениджър на проекта.",
+    "english": "He’s the project manager."
+  },
+  {
+    "id": 54,
+    "bulgarian": "Срещата беше успешна.",
+    "english": "The meeting was successful."
+  },
+  {
+    "id": 55,
+    "bulgarian": "Трябва да направим промени.",
+    "english": "We need to make changes."
+  },
+  {
+    "id": 56,
+    "bulgarian": "Ще проверя това.",
+    "english": "I’ll check that."
+  },
+  {
+    "id": 57,
+    "bulgarian": "Добре свършена работа!",
+    "english": "Well done!"
+  },
+  {
+    "id": 58,
+    "bulgarian": "Имаш ли въпроси?",
+    "english": "Do you have any questions?"
+  },
+  {
+    "id": 59,
+    "bulgarian": "Всичко е ясно.",
+    "english": "Everything is clear."
+  },
+  {
+    "id": 60,
+    "bulgarian": "Трябва да тръгвам.",
+    "english": "I have to go."
+  },
+  {
+    "id": 61,
+    "bulgarian": "Ще се върна след малко.",
+    "english": "I’ll be back soon."
+  },
+  {
+    "id": 62,
+    "bulgarian": "Днес е натоварен ден.",
+    "english": "Today is a busy day."
+  },
+  {
+    "id": 63,
+    "bulgarian": "Имам среща с клиента.",
+    "english": "I have a meeting with the client."
+  },
+  {
+    "id": 64,
+    "bulgarian": "Ще изпратя офертата.",
+    "english": "I’ll send the offer."
+  },
+  {
+    "id": 65,
+    "bulgarian": "Трябва да подготвим презентацията.",
+    "english": "We need to prepare the presentation."
+  },
+  {
+    "id": 66,
+    "bulgarian": "Имаме нов колега.",
+    "english": "We have a new colleague."
+  },
+  {
+    "id": 67,
+    "bulgarian": "Къде е моят лаптоп?",
+    "english": "Where is my laptop?"
+  },
+  {
+    "id": 68,
+    "bulgarian": "Трябва да обновя системата.",
+    "english": "I need to update the system."
+  },
+  {
+    "id": 69,
+    "bulgarian": "Интернетът не работи.",
+    "english": "The internet isn’t working."
+  },
+  {
+    "id": 70,
+    "bulgarian": "Ще рестартирам компютъра.",
+    "english": "I’ll restart the computer."
+  },
+  {
+    "id": 71,
+    "bulgarian": "Имаш ли зарядно?",
+    "english": "Do you have a charger?"
+  },
+  {
+    "id": 72,
+    "bulgarian": "Батерията ми свършва.",
+    "english": "My battery is dying."
+  },
+  {
+    "id": 73,
+    "bulgarian": "Изпрати ми линка, моля.",
+    "english": "Send me the link, please."
+  },
+  {
+    "id": 74,
+    "bulgarian": "Файлът е твърде голям.",
+    "english": "The file is too big."
+  },
+  {
+    "id": 75,
+    "bulgarian": "Нека използваме Google Drive.",
+    "english": "Let’s use Google Drive."
+  },
+  {
+    "id": 76,
+    "bulgarian": "Провери имейла си.",
+    "english": "Check your email."
+  },
+  {
+    "id": 77,
+    "bulgarian": "Работното време свършва в шест.",
+    "english": "Work ends at six."
+  },
+  {
+    "id": 78,
+    "bulgarian": "Ще се видим утре в офиса.",
+    "english": "See you tomorrow at the office."
+  },
+  {
+    "id": 79,
+    "bulgarian": "Имам нужда от почивка.",
+    "english": "I need a break."
+  },
+  {
+    "id": 80,
+    "bulgarian": "Ще отида на разходка.",
+    "english": "I’ll go for a walk."
+  },
+  {
+    "id": 81,
+    "bulgarian": "Обичам да чета книги.",
+    "english": "I like reading books."
+  },
+  {
+    "id": 82,
+    "bulgarian": "Гледах интересен филм.",
+    "english": "I watched an interesting movie."
+  },
+  {
+    "id": 83,
+    "bulgarian": "Харесвам тази музика.",
+    "english": "I like this music."
+  },
+  {
+    "id": 84,
+    "bulgarian": "Имам ново хоби.",
+    "english": "I have a new hobby."
+  },
+  {
+    "id": 85,
+    "bulgarian": "Ходя на фитнес след работа.",
+    "english": "I go to the gym after work."
+  },
+  {
+    "id": 86,
+    "bulgarian": "Обичам да пътувам.",
+    "english": "I love to travel."
+  },
+  {
+    "id": 87,
+    "bulgarian": "Бях в планината миналия уикенд.",
+    "english": "I was in the mountains last weekend."
+  },
+  {
+    "id": 88,
+    "bulgarian": "Искам да науча нов език.",
+    "english": "I want to learn a new language."
+  },
+  {
+    "id": 89,
+    "bulgarian": "Уча български.",
+    "english": "I’m learning Bulgarian."
+  },
+  {
+    "id": 90,
+    "bulgarian": "Българският е интересен език.",
+    "english": "Bulgarian is an interesting language."
+  },
+  {
+    "id": 91,
+    "bulgarian": "Правя грешки, но се уча.",
+    "english": "I make mistakes, but I’m learning."
+  },
+  {
+    "id": 92,
+    "bulgarian": "Благодаря за помощта!",
+    "english": "Thank you for your help!"
+  },
+  {
+    "id": 93,
+    "bulgarian": "Много сте любезни.",
+    "english": "You’re very kind."
+  },
+  {
+    "id": 94,
+    "bulgarian": "Извинете, може ли въпрос?",
+    "english": "Excuse me, may I ask a question?"
+  },
+  {
+    "id": 95,
+    "bulgarian": "Къде се намира банкоматът?",
+    "english": "Where is the ATM?"
+  },
+  {
+    "id": 96,
+    "bulgarian": "Колко струва това?",
+    "english": "How much does this cost?"
+  },
+  {
+    "id": 97,
+    "bulgarian": "Бих искал сметката, моля.",
+    "english": "I’d like the bill, please."
+  },
+  {
+    "id": 98,
+    "bulgarian": "Къде е най-близкият магазин?",
+    "english": "Where is the nearest store?"
+  },
+  {
+    "id": 99,
+    "bulgarian": "Имам нужда от лекар.",
+    "english": "I need a doctor."
+  }
+]
