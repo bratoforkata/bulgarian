@@ -66,6 +66,16 @@ class SentenceManager {
         console.log(`Started new sentence session with ${this.sessionSentences.length} sentences`);
     }
 
+    // Shuffle an array using Fisher-Yates
+    shuffleArray(items) {
+        const shuffled = [...items];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
     // Get next sentence with multiple choice
     getNextSentence() {
         if (!this.sessionActive || this.currentSentenceIndex >= this.sessionSentences.length) {
@@ -74,17 +84,14 @@ class SentenceManager {
 
         const sentence = this.sessionSentences[this.currentSentenceIndex];
         this.currentSentenceIndex++;
+        const shuffledOptions = this.shuffleArray(sentence.options);
 
         return {
             id: sentence.id,
             blankedSentence: sentence.question_bg,
             englishTranslation: sentence.translation_en,
-            options: sentence.options,
-<<<<<<< HEAD
-            correctAnswer: sentence.options.indexOf(sentence.answer), // index of correct answer
-=======
-            answer: sentence.options.indexOf(sentence.answer), // index of correct answer
->>>>>>> sentences-added
+            options: shuffledOptions,
+            correctAnswer: shuffledOptions.indexOf(sentence.answer), // index of correct answer
             fullSentence: sentence.question_bg.replace(/____/g, sentence.answer)
         };
     }
