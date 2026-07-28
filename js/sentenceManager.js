@@ -80,7 +80,11 @@ class SentenceManager {
             blankedSentence: sentence.question_bg,
             englishTranslation: sentence.translation_en,
             options: sentence.options,
+<<<<<<< HEAD
             correctAnswer: sentence.options.indexOf(sentence.answer), // index of correct answer
+=======
+            answer: sentence.options.indexOf(sentence.answer), // index of correct answer
+>>>>>>> sentences-added
             fullSentence: sentence.question_bg.replace(/____/g, sentence.answer)
         };
     }
