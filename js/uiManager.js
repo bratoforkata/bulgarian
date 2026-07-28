@@ -8,6 +8,8 @@ class UIManager {
         this.revealDelay = 5000; // 5 seconds
         this.currentSentence = null;
         this.onOptionSelected = null;
+        this.shuffledOptions = null;
+        this.correctIndex = null;
     }
 
     // Initialize UI components
@@ -309,10 +311,19 @@ class UIManager {
 
         // Create option buttons in practice-actions
         if (practiceActions) {
+            // Shuffle options
+            this.shuffledOptions = [...sentenceData.options];
+            const correctOption = this.shuffledOptions[sentenceData.answer];
+            for (let i = this.shuffledOptions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [this.shuffledOptions[i], this.shuffledOptions[j]] = [this.shuffledOptions[j], this.shuffledOptions[i]];
+            }
+            this.correctIndex = this.shuffledOptions.indexOf(correctOption);
+
             const optionsContainer = document.createElement('div');
             optionsContainer.className = 'sentence-options';
             const cyrillicLetters = ['А', 'Б', 'В'];
-            optionsContainer.innerHTML = sentenceData.options.map((option, index) =>
+            optionsContainer.innerHTML = this.shuffledOptions.map((option, index) =>
                 `<button class="option-btn" data-index="${index}">${cyrillicLetters[index]}. ${option}</button>`
             ).join('');
             practiceActions.appendChild(optionsContainer);
@@ -338,7 +349,7 @@ class UIManager {
         // Add click handlers to options
         const optionBtns = document.querySelectorAll('.option-btn');
         optionBtns.forEach(btn => {
-            btn.addEventListener('click', () => this.handleOptionClick(btn, sentenceData.correctAnswer, sentenceData));
+            btn.addEventListener('click', () => this.handleOptionClick(btn, this.correctIndex, sentenceData));
         });
 
         if (onReady) onReady();
